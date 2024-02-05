@@ -11,8 +11,6 @@ from django.core.mail import EmailMessage
 
 # Create your views here.
 
-
-
 class RegisterView(generics.CreateAPIView):
     serializer_class = personSerializer
     renderer_classes = [TemplateHTMLRenderer]
@@ -48,3 +46,29 @@ class RegisterView(generics.CreateAPIView):
             serializer.save()
             return redirect("login")
         return render(request, self.template_name, {"serializer": serializer})
+    
+
+class LoginView(generics.CreateAPIView):
+    serializer_class = personSerializer
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "login.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        if username and password:
+            user = person.objects.filter(username=username).first()
+            if user and user.password == password:
+                messages.success(request, "Login successful")
+                request.session["username"] = username
+                return redirect("home")
+            else:
+                messages.error(request, "Invalid Username or Password")
+        else:
+
+            return render(request, self.template_name)
+
