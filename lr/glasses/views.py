@@ -71,4 +71,93 @@ class LoginView(generics.CreateAPIView):
         else:
 
             return render(request, self.template_name)
+        
 
+class ForgotView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    tempalte_name = "forgot.html"
+
+    def get(self, request):
+        return render(request, self.tempalte_name)
+
+    def post(self,request):
+        email=request.POST.get("email")
+        print('email:',email)
+        try:
+            user=person.objects.filter(email=email)
+            request.session["email"] = email
+            print(user)
+        except:
+            return redirect('forgot')
+        
+        if user:
+            otp = str(random.randint(1000,9999))
+            request.session["otp"] = otp
+            print("otp :", otp)
+            email = EmailMessage(body=otp,to=[email])
+            email.send()
+            return redirect('otppage')
+        else:
+            messages.error(request, "Email Not Valid")
+            return redirect('forgot')   
+        
+        
+        
+       
+class OtpView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "otp.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self,request):
+        enter_otp=request.POST.get('enter_otp')
+        otp = request.session.get("otp")
+        if otp != enter_otp:
+            messages.error(request," Invalid OTP")
+            return redirect('otppage')
+        else:
+            return redirect('reset')
+        return render(request,self.template_name)
+
+
+class ResetView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "reset.html"
+    
+    def get(self, request):
+        return render(request, self.template_name)
+    
+    def Post(self, request):
+        email = request.POST.get("email")
+
+
+    def post(self, request):
+        new_password = request.POST.get("new_password")
+        confirmpassword = request.POST.get("confirm__password")
+        print("new_password:",new_password)
+        print("confirm_password:",confirmpassword)
+        email= request.session.get("email")
+        
+        try:
+            user=person.objects.filter(email=email)
+        except:
+            return redirect('forgot')
+        
+        if new_password != confirmpassword:
+            messages.error(request,"password Does't match")
+            return redirect('reset')
+        user = request.user
+        if user:
+            user.set_password(new_password)
+            user.save()
+            return redirect('login')
+        return render(request,self.template_name)   
+
+class HomeView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "home.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
