@@ -153,3 +153,31 @@ class HomeView(generics.CreateAPIView):
 
     def get(self, request):
         return render(request, self.template_name)
+    
+class AboutView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "about.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+    
+class ContactView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "Contact.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+    
+class ShopView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "shop.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+class GlassView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "glass.html"
+
+    def get(self, request):
+        return render(request, self.template_name)

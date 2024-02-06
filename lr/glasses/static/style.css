@@ -170,7 +170,7 @@ a:focus {
 /*end header section*/
 /* slider section */
 .slider_section {
-  height: calc(100% - 80px);
+  height: calc(100% - 75px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,7 +212,7 @@ a:focus {
   font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
-  margin-left: 880px;
+  margin-left: 850px;
 }
 
 .slider_section .detail-box .btn-box {
@@ -227,7 +227,7 @@ a:focus {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   border: 1px solid transparent;
-  margin-left: 800px;
+  margin-left: 850px;
 }
 
 .slider_section .detail-box .btn-box a:hover {
@@ -341,7 +341,7 @@ a:focus {
 }
 
 .glass_section {
-  background-color: #bcc4f2;
+  background-color: #7bc3d1;
 }
 
 .glass_section .heading_container h2 {
@@ -640,7 +640,7 @@ a:focus {
 
 /* contact section */
 .contact_section {
-  background-color: #141414;
+  background-color: #518291;
   color: #ffffff;
 }
 
