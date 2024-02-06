@@ -60,7 +60,7 @@ class LoginView(generics.CreateAPIView):
             user = person.objects.filter(username=username).first()
             if user and user.password == password:
                 messages.success(request, "Login successful")
-                request.session["username"] = username
+                # request.session["username"] = username
                 return redirect("home")
             else:
                 messages.error(request, "Invalid Username or Password")
