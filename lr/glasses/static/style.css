@@ -177,7 +177,13 @@ a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+
   background-image: url(images/Screenshot_2024-02-06_125148.png);
+
+  /* background-image: url(images/44031737.j
+  ); */
+  background-image: url(images/44031737.jpg);
+
   background-size: 100% 100%;
 }
 
@@ -201,6 +207,8 @@ a:focus {
   text-transform: uppercase;
   font-size: 4.5rem;
   color: #0e020c;
+  margin-left: 850px;
+  font-size: xxx-large;
 }
 
 .slider_section .detail-box h2 {
@@ -208,6 +216,7 @@ a:focus {
   font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
+  margin-left: 880px;
 }
 
 .slider_section .detail-box .btn-box {
@@ -222,6 +231,7 @@ a:focus {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   border: 1px solid transparent;
+  margin-left: 800px;
 }
 
 .slider_section .detail-box .btn-box a:hover {
