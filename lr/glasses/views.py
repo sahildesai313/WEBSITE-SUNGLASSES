@@ -32,12 +32,8 @@ class RegisterView(generics.CreateAPIView):
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
 
-            if len(phone) != 10 :
-                messages.error(request,"phone number is not Valid")
-
             if len(phone) != 10:
                 messages.error(request, "phone number is not Valid")
-
                 return redirect("register")
 
             if password != confirm_password:
@@ -129,10 +125,6 @@ class ResetView(generics.CreateAPIView):
     def get(self, request):
         return render(request, self.template_name)
     
-    def Post(self, request):
-        email = request.POST.get("email")
-
-
     def post(self, request):
         new_password = request.POST.get("new_password")
         confirmpassword = request.POST.get("confirm__password")
