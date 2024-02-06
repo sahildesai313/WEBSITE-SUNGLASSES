@@ -155,6 +155,36 @@ class HomeView(generics.CreateAPIView):
     def get(self, request):
         return render(request, self.template_name)
     
+<<<<<<< HEAD
+class AboutView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "about.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+    
+class ContactView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "Contact.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+    
+class ShopView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "shop.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+class GlassView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "glass.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+=======
     def post(self,request):
         data=product.objects.all()
         return render(request,self.template_name,context={'data':data})
+>>>>>>> f4892a1264c3768889afb31319ce4df8745d8f7d
