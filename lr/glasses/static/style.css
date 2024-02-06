@@ -177,9 +177,13 @@ a:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+
+  background-image: url(images/Screenshot_2024-02-06_125148.png);
+
   /* background-image: url(images/44031737.j
   ); */
   background-image: url(images/44031737.jpg);
+
   background-size: 100% 100%;
 }
 
@@ -342,6 +346,7 @@ a:focus {
 
 .glass_section {
   background-color: #7bc3d1;
+  background-color:#4ca1ac;
 }
 
 .glass_section .heading_container h2 {

@@ -8,6 +8,7 @@ from .models import person
 from django.contrib import messages
 import random
 from django.core.mail import EmailMessage
+from.models import person,product
 
 # Create your views here.
 
@@ -154,6 +155,7 @@ class HomeView(generics.CreateAPIView):
     def get(self, request):
         return render(request, self.template_name)
     
+<<<<<<< HEAD
 class AboutView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "about.html"
@@ -181,3 +183,8 @@ class GlassView(generics.CreateAPIView):
 
     def get(self, request):
         return render(request, self.template_name)
+=======
+    def post(self,request):
+        data=product.objects.all()
+        return render(request,self.template_name,context={'data':data})
+>>>>>>> f4892a1264c3768889afb31319ce4df8745d8f7d

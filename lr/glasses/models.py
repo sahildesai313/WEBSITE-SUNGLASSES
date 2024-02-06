@@ -23,3 +23,17 @@ class person(models.Model):
 
     def __str__(self):
         return f"{self.username} {self.fullname} {self.email} {self.phone} {self.gender} {self.country}"
+
+
+
+
+class product(models.Model):
+    product_name=models.CharField(max_length=250)
+    product_price=models.IntegerField()
+    product_description =models.TextField(max_length=250)
+    product_image=models.ImageField(upload_to="food",default=None)
+    id=models.AutoField(primary_key=True)
+    
+
+    def __str__(self):
+        return f"{self.product_name}{self.product_price}{self.product_description}{self.product_image}{self.id}"
