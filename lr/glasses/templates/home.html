@@ -1,19 +1,35 @@
-<html>
-       <head>
-                <title>
-                       home
-                </title>
-       </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static  %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun_Glasses</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
 <body>
-       hello world
+    <header>
+        <div class="logo">ᒪIKE ᖇEᗩᒪ</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="hero">
+        <h1>Welcome to Mencart</h1>
+        <p>Your one-stop destination for all your shopping needs.</p>
+        <a href="#" class="btn">Shop Now</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mencart. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-
-  <head>
-    <title> </title>
-  </head>
-
-  <body>
-    Regiater succecfully
-  </body>
-
 </html>
