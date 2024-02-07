@@ -1,5 +1,5 @@
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #0c0c0c;
   background-color: #ffffff;
 }
@@ -100,11 +100,11 @@ a:focus {
 .btn:focus {
   outline: none !important;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 .custom_nav-container .nav_search-btn {
-  background-image: url(../images/search-icon.png);
+  background-image: url(images/search-icon.png);
   background-size: 22px;
   background-repeat: no-repeat;
   background-position-y: 7px;
@@ -119,8 +119,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .navbar-brand span {
@@ -129,7 +129,6 @@ a:focus {
   color: #d7cff4;
   text-transform: uppercase;
 }
-
 .custom_nav-container {
   z-index: 99999;
   padding: 15px 0;
@@ -149,8 +148,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .quote_btn-container a {
@@ -159,7 +158,7 @@ a:focus {
 }
 
 .quote_btn-container a img {
-  width: 15px;
+  width: 25px;
   margin: 0 35px;
 }
 
@@ -175,8 +174,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 
   background-image: url(images/Screenshot_2024-02-06_125148.png);
 
@@ -195,12 +194,14 @@ a:focus {
 
 .slider_section .glass h6 {
   -webkit-writing-mode: tb;
-      -ms-writing-mode: tb;
-          writing-mode: tb;
+  -ms-writing-mode: tb;
+  writing-mode: tb;
   text-orientation: upright;
   text-transform: uppercase;
-  color: #ffffff;
-  letter-spacing: -5px;
+  color: #0c0c0c;
+  letter-spacing: 0px;
+  margin-right: 1370px;
+  margin-top: 140px;
 }
 
 .slider_section .detail-box h1 {
@@ -247,8 +248,8 @@ a:focus {
 .slider_section .carousel-indicators {
   color: #ffffff;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   margin: 0;
   bottom: 45px;
   right: 45px;
@@ -274,7 +275,7 @@ a:focus {
   left: 0;
   width: 105px;
   -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 /* .slider_section .custom_carousel-control .carousel-control-prev,
@@ -315,8 +316,8 @@ a:focus {
 /* end slider section */
 .about_section .row {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .about_section .detail-box .heading_container {
@@ -346,7 +347,7 @@ a:focus {
 
 .glass_section {
   background-color: #7bc3d1;
-  background-color:#4ca1ac;
+  background-color: #4ca1ac;
 }
 
 .glass_section .heading_container h2 {
@@ -367,10 +368,10 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .glass_section .glass_container .box {
@@ -382,11 +383,11 @@ a:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   text-align: center;
   padding: 20px;
   border-radius: 15px;
@@ -399,11 +400,11 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .glass_section .glass_container .box .img-box img {
@@ -420,8 +421,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .glass_section .btn-box a {
@@ -468,8 +469,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 100%;
 }
 
@@ -483,8 +484,8 @@ a:focus {
 
 .offer_section .row {
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .offer_section .img-box {
@@ -503,11 +504,11 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   width: 70px;
   height: 70px;
   background-color: #eb19b7;
@@ -549,8 +550,8 @@ a:focus {
 
 .buy_section .heading_container {
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .buy_section .heading_container h2 .s-2 {
@@ -563,11 +564,11 @@ a:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .buy_section .box .img-box {
@@ -601,8 +602,8 @@ a:focus {
 
 .client_section .heading_container {
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .client_section .box {
@@ -611,11 +612,11 @@ a:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-top: 45px;
   width: 650px;
   margin: 45px auto 0 auto;
@@ -627,16 +628,16 @@ a:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-top: 15px;
 }
 
 .client_section .box .client-id .img-box img {
-  width: 100%;
+  width: 25%;
 }
 
 .client_section .box .client-id h5 {
@@ -656,8 +657,8 @@ a:focus {
 
 .contact_section .heading_container {
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .contact_section .heading_container h2 {
@@ -667,7 +668,7 @@ a:focus {
 .contact_section .heading_container h2::before {
   right: 50%;
   -webkit-transform: translateX(50%);
-          transform: translateX(50%);
+  transform: translateX(50%);
 }
 
 .contact_section .contact_form-container {
@@ -745,8 +746,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .info_section form input {
@@ -811,8 +812,8 @@ a:focus {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   background-color: #bcc4f2;
   padding: 20px;
 }
@@ -826,6 +827,3 @@ a:focus {
 .footer_section a {
   color: #000000;
 }
-
-/* end footer section*/
-/*# sourceMappingURL=style.css.map */
