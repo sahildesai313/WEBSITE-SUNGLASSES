@@ -1,0 +1,195 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+    
+       
+        nav {
+            display: block;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: right;
+        }
+        ul {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+        header {
+            background-color: #169191;
+            color: rgb(12, 214, 197);
+            background-repeat: no-repeat;
+            padding: 10px;
+            text-align: center;
+            background-size: cover;
+        }
+        header {
+            background-color: #169191;
+            color: rgb(12, 214, 197);
+            background-repeat: no-repeat;
+            padding: 10px;
+            text-align: center;
+            background-size: cover;
+            height:90px;
+        }
+
+        header.nav{
+
+            margin-left:1450px;
+
+        }
+
+        section {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius:20px;
+            border: 1px solid #000000;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #777;
+        }
+
+  
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #169191;
+           
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        nav.a {
+            border-style: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 style="color:white;">User Profile</h2>
+        <nav>
+            <ul>
+            
+                <li><a href="/home/" style="text-decoration: none;color: black;" >Back</a></li>
+            </ul>
+            
+           
+    </nav>
+    </header>
+    <section>
+        <img src="profile-picture.jpg" alt="Profile Picture">
+        <h2>John Doe</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+
+        <h2>Contact Information</h2>
+        <ul>
+            <li>
+                <img src="email-icon.png" alt="Email Icon">
+                john.doe@example.com
+            </li>
+            <li>
+                <img src="phone-icon.png" alt="Phone Icon">
+                +1 123-456-7890
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+      Sahil Desai
+    </footer>
+</body>
+</html> {% endcomment %}
+
+
+
+{%load static%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Profile </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+  <body>
+    <header>
+      <div class="inner-width">
+        <i class="menu-toggle-btn fas fa-bars"></i>
+        <nav class="navigation-menu">
+        
+          <a href="/home/">𝐁𝐚𝐜𝐤</a>
+        </nav>
+      </div>
+    </header>
+    {% csrf_token%}
+    <div class="wrapper">
+      <h2>Profile</h2>
+      <div>
+        
+        <img src="https://png.pngtree.com/png-clipart/20230913/original/pngtree-profile-picture-vector-png-image_11063301.png" height="220px" width="220px">
+      </div>
+      {% comment %} <div class="input-box button">
+        <a href="/edit"><input type="Submit" value="Update Profile"></a>
+      </div> {% endcomment %}
+    </div>
+    
+
+    <div class="wrappe">
+    {% for x in datas %}
+   <p>{{x.fullname}}</p><hr>
+   <p>{{x.email}}</P><hr>
+   <p>{{x.phone}}</p><hr>
+   <p>{{x.country}}</p>
+   {% endfor %}
+   <hr>
+   <div class="input-box button1">
+    <a href="/edit"><input type="Submit" value="Edit"></a>
+  </div>
+  <div class="input-box button">
+    <a href="/edit"><input type="Submit" value="Change Password"></a>
+  </div>
+   
+    </div>
+    
+    <footer>
+        𝐋𝐢𝐤𝐞𝐑𝐞𝐚𝐥
+    </footer>
+</body>
+</html>

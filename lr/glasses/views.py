@@ -152,8 +152,19 @@ class HomeView(generics.CreateAPIView):
     template_name = "home.html"
 
     def get(self, request):
-        return render(request, self.template_name)
+        data=product.objects.all()
+        print(data)
+        return render(request, self.template_name,context={'datas':data})
 
+
+
+class ProfileView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "profile.html"
+
+    def get(self, request):
+        data=person.objects.all()
+        return render(request, self.template_name,context={'datas':data})
 
 class AboutView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
