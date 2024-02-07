@@ -37,7 +37,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand mr-5" href="index.html">
+          <a class="navbar-brand mr-5" href="{% url 'home' %}">
             <span>
               Like-Real
             </span>
@@ -63,6 +63,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                  </li>
                 </ul>
                             </div>
             <div class="quote_btn-container ">
@@ -96,7 +99,6 @@
               <div class="row">
                 <div class="col-md-7">
                   <div class="detail-box">
-                    <div>
                       <h1>
                         Welcome to online
                       </h1>
@@ -104,11 +106,10 @@
                         Glasses shop
                       </h2>
                       <div class="btn-box">
-                        <a href={% url 'shop' %} class="btn-1">
+                        <a href="{% url 'shop' %}" class="btn-1">
                           Buy Now
                         </a>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -145,7 +146,7 @@
               looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
               letters,
             </p>
-            <a href="">
+            <a href="{% url 'about' %}">
               Read More
             </a>
           </div>
@@ -179,7 +180,7 @@
           </div>
           <div class="product">
             <h6>
-              {{x.product_price}}
+              {{x.product_price}}$
             </h6>
             <a href="">
               Buy Now
@@ -188,7 +189,11 @@
         </div>
         {% endfor %}
       </div>
-
+      <div class="btn-box">
+        <a href="{% url 'shop' %}">
+          See More
+        </a>
+      </div>
      
     </div>
   </section>
