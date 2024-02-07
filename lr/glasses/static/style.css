@@ -208,8 +208,7 @@ a:focus {
   text-transform: uppercase;
   font-size: 4.5rem;
   color: #0e020c;
-  margin-left: 850px;
-  font-size: xxx-large;
+
 }
 
 .slider_section .detail-box h2 {
@@ -217,7 +216,7 @@ a:focus {
   font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
-  margin-left: 850px;
+  
 }
 
 .slider_section .detail-box .btn-box {
@@ -827,3 +826,4 @@ a:focus {
 .footer_section a {
   color: #000000;
 }
+

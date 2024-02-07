@@ -10,6 +10,7 @@ urlpatterns = [
     path("", LoginView.as_view(), name="login"),
     path("home/", HomeView.as_view(), name="home"),
     path("profile/", ProfileView.as_view(), name="profile"),
+    path("logout/", LogoutView.as_view(), name="logout"),
     path("forgot/", ForgotView.as_view(), name="forgot"),
     path("otp/", OtpView.as_view(), name="otppage"),
     path("reset/", ResetView.as_view(), name="reset"),

@@ -1,14 +1,14 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
-from rest_framework import generics
+from rest_framework import generics,status
 from rest_framework.response import Response
 from .serializers import personSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
-from .models import person
 from django.contrib import messages
 import random
 from django.core.mail import EmailMessage
 from .models import person, product
+from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
 
 
 
@@ -18,14 +18,22 @@ class RegisterView(generics.CreateAPIView):
     template_name = "register.html"
 
     def get(self, request):
+        if "username" in request.session:
+            return redirect("home")
         serializer = personSerializer()
         return render(request, self.template_name, {"serializer": serializer})
 
     def post(self, request):
         username = request.data.get("username")
-        if person.objects.filter(username=username).exists():
+        phone = request.data.get("phone")
+        if person.objects.filter(username=username).exists():   
             messages.error(request, "Username already exists")
             return redirect("register")
+        
+        if len(phone) != 10:
+                messages.error(request, "phone number is not Valid")
+                return redirect("register")
+
 
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
@@ -33,10 +41,7 @@ class RegisterView(generics.CreateAPIView):
             password = serializer.validated_data.get("password")
             confirm_password = serializer.validated_data.get("confirmpassword")
 
-            if len(phone) != 10:
-                messages.error(request, "phone number is not Valid")
-                return redirect("register")
-
+           
             if password != confirm_password:
                 messages.error(request, "Passwords do not match")
                 return redirect("register")
@@ -51,6 +56,8 @@ class LoginView(generics.CreateAPIView):
     template_name = "login.html"
 
     def get(self, request):
+        if "username" in request.session:
+            return redirect("home")
         return render(request, self.template_name)
 
     def post(self, request):
@@ -61,7 +68,7 @@ class LoginView(generics.CreateAPIView):
             user = person.objects.filter(username=username).first()
             if user and user.password == password:
                 messages.success(request, "Login successful")
-                # request.session["username"] = username
+                request.session["username"] = username
                 return redirect("home")
             else:
                 messages.error(request, "Invalid Username or Password")
@@ -75,6 +82,8 @@ class ForgotView(generics.CreateAPIView):
     tempalte_name = "forgot.html"
 
     def get(self, request):
+        if "username" in request.session:
+            return redirect("home")
         return render(request, self.tempalte_name)
 
     def post(self, request):
@@ -104,6 +113,8 @@ class OtpView(generics.CreateAPIView):
     template_name = "otp.html"
 
     def get(self, request):
+        if "username" in request.session:
+            return redirect("home")
         return render(request, self.template_name)
 
     def post(self, request):
@@ -122,6 +133,8 @@ class ResetView(generics.CreateAPIView):
     template_name = "reset.html"
 
     def get(self, request):
+        if "username" in request.session:
+            return redirect("home")
         return render(request, self.template_name)
 
     def post(self, request):
@@ -131,20 +144,18 @@ class ResetView(generics.CreateAPIView):
         print("confirm_password:", confirmpassword)
         email = request.session.get("email")
 
-        try:
-            user = person.objects.filter(email=email)
-        except:
-            return redirect("forgot")
-
-        if new_password != confirmpassword:
-            messages.error(request, "password Does't match")
+        if new_password == confirmpassword:
+            try:
+                user = person.objects.get(email=email)
+                user.password=new_password
+                user.confirmpassword = confirmpassword
+                user.save()
+                return redirect("login")
+            except person.DoesNotExist:
+                return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            messages.error(request, "password not match")
             return redirect("reset")
-        user = request.user
-        if user:
-            user.set_password(new_password)
-            user.save()
-            return redirect("login")
-        return render(request, self.template_name)
 
 
 class HomeView(generics.CreateAPIView):
@@ -152,25 +163,39 @@ class HomeView(generics.CreateAPIView):
     template_name = "home.html"
 
     def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
         data=product.objects.all()
         print(data)
         return render(request, self.template_name,context={'datas':data})
-
-
+    
+    
+class LogoutView(APIView):
+    permission_classes=(AllowAny,)
+    def get(self,request):
+        del request.session["username"]
+        return redirect('login')
+        
+        
 
 class ProfileView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "profile.html"
 
     def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
         data=person.objects.all()
         return render(request, self.template_name,context={'datas':data})
+    
 
 class AboutView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "about.html"
 
     def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
         return render(request, self.template_name)
 
 
@@ -179,6 +204,8 @@ class ContactView(generics.CreateAPIView):
     template_name = "Contact.html"
 
     def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
         return render(request, self.template_name)
 
 
@@ -187,7 +214,11 @@ class ShopView(generics.CreateAPIView):
     template_name = "shop.html"
 
     def get(self, request):
-        return render(request, self.template_name)
+        if "username" not in request.session:
+            return redirect("login")
+        data=product.objects.all()
+        return render(request, self.template_name,context={'datas':data})
+       
 
 
 class GlassView(generics.CreateAPIView):
@@ -195,6 +226,8 @@ class GlassView(generics.CreateAPIView):
     template_name = "glass.html"
 
     def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
         return render(request, self.template_name)
 
     def post(self, request):

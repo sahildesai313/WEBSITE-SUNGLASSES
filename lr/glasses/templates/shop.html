@@ -63,8 +63,8 @@
             </ul>
         </div>
             <div class="quote_btn-container ">
-              <a href="">
-                Log in
+              <a href="{% url 'profile' %}">
+                profile
               </a>
               <a href="">
                 <img src="https://cdn-icons-png.flaticon.com/512/7344/7344327.png" alt="">
@@ -89,117 +89,26 @@
           <span> Our </span> Glasses
         </h2>
       </div>
+      
       <div class="glass_container">
+        {% for x in datas %}
         <div class="box">
           <div class="img-box">
-            <img src="images/g-1.png" alt="">
+            <img src="{{x.product_image.url}}" alt="">
           </div>
-          <div class="price">
+          <div class="product">
             <h6>
-              $50
+              {{x.product_price}}$
             </h6>
             <a href="">
               Buy Now
             </a>
           </div>
         </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-2.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-3.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-4.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-5.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-6.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-7.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="images/g-8.png" alt="">
-          </div>
-          <div class="price">
-            <h6>
-              $50
-            </h6>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
-      <div class="btn-box">
-        <a href="">
-          See More
-        </a>
-      </div>
+
+     
     </div>
   </section>
 
