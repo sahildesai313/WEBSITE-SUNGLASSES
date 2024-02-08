@@ -72,9 +72,11 @@ class LoginView(generics.CreateAPIView):
                 return redirect("home")
             else:
                 messages.error(request, "Invalid Username or Password")
+                return redirect("login")
         else:
 
             return render(request, self.template_name)
+        
 
 
 class ForgotView(generics.CreateAPIView):
@@ -185,7 +187,8 @@ class ProfileView(generics.CreateAPIView):
     def get(self, request):
         if "username" not in request.session:
             return redirect("login")
-        data=person.objects.all()
+        username = request.session.get("username")
+        data=person.objects.filter(username=username)
         return render(request, self.template_name,context={'datas':data})
     
 
