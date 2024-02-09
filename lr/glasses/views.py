@@ -221,8 +221,11 @@ class ShopView(generics.CreateAPIView):
         if "username" not in request.session:
             return redirect("login")
         data=product.objects.all()
+        print("data", data)
         maledata=maleproduct.objects.all()
+        print("maledata", maledata)
         femaledata=femaleproduct.objects.all()
+        print("femaledata", femaledata)
         return render(request, self.template_name,context={'datas':data,'maledata':maledata,'femaledata':femaledata})
        
 
