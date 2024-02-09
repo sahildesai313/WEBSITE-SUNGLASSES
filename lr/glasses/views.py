@@ -6,7 +6,7 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from django.contrib import messages
 import random
 from django.core.mail import EmailMessage
-from .models import person, product
+from .models import *
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
@@ -127,7 +127,8 @@ class OtpView(generics.CreateAPIView):
             return redirect("otppage")
         else:
             return redirect("reset")
-        return render(request, self.template_name)
+        
+        
 
 
 class ResetView(generics.CreateAPIView):
@@ -148,13 +149,13 @@ class ResetView(generics.CreateAPIView):
 
         if new_password == confirmpassword:
             try:
-                user = person.objects.get(email=email)
+                user = person.objects.filter(email=email).first()
                 user.password=new_password
                 user.confirmpassword = confirmpassword
                 user.save()
                 return redirect("login")
             except person.DoesNotExist:
-                return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
+                return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             messages.error(request, "password not match")
             return redirect("reset")
@@ -220,7 +221,9 @@ class ShopView(generics.CreateAPIView):
         if "username" not in request.session:
             return redirect("login")
         data=product.objects.all()
-        return render(request, self.template_name,context={'datas':data})
+        maledata=maleproduct.objects.all()
+        femaledata=femaleproduct.objects.all()
+        return render(request, self.template_name,context={'datas':data,'maledata':maledata,'femaledata':femaledata})
        
 
 

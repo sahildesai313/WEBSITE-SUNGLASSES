@@ -60,6 +60,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
             </ul>
         </div>
             <div class="quote_btn-container ">
@@ -80,7 +83,7 @@
     <!-- end header section -->
   </div>
 
-  <!-- glass section -->
+  <!-- glass all section -->
 
   <section class="glass_section layout_padding">
     <div class="container">
@@ -112,7 +115,75 @@
     </div>
   </section>
 
-  <!-- end glass section -->
+  <!-- end glass all section -->
+
+  <!-- glass  male section -->
+
+  <section class="glass_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          <span> Male</span>
+        </h2>
+      </div>
+      
+      <div class="glass_container">
+        {% for x in maledata %}
+        <div class="box">
+          <div class="img-box">
+            <img src="{{x.product_image.url}}" alt="">
+          </div>
+          <div class="product">
+            <h6>
+              {{x.product_price}}$
+            </h6>
+            <a href="">
+              Buy Now
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+     
+    </div>
+  </section>
+
+  <!-- end glass male section -->
+
+  <!-- glass  female section -->
+
+  <section class="glass_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          <span> Female </span> 
+        </h2>
+      </div>
+      
+      <div class="glass_container">
+        {% for x in  femaledata %}
+        <div class="box">
+          <div class="img-box">
+            <img src="{{x.product_image.url}}" alt="">
+          </div>
+          <div class="product">
+            <h6>
+              {{x.product_price}}$
+            </h6>
+            <a href="">
+              Buy Now
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+     
+    </div>
+  </section>
+
+  <!-- end glass female section -->
 
   <!-- info section -->
 
@@ -155,24 +226,18 @@
           </ul>
         </div>
         <div class="col-md-3">
-          <h6>
-            Contact us
-          </h6>
+          <h6>Contact us</h6>
           <ul>
             <li>
-              <a href="">
-                Lorem ipsum dolor sit
-              </a>
+              <a href="">Email - official@Likereal.com
+                </a>
             </li>
             <li>
-              <a href="">
-                amet, consectetur adipis
-              </a>
+              <a href="">  Phone no - +1 999-000-222
+                </a>
             </li>
             <li>
-              <a href="">
-                cing elit, sed do
-              </a>
+              <a href="">  website - Likereal.com </a>
             </li>
           </ul>
         </div>
