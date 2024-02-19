@@ -8,14 +8,14 @@ admin.site.register(person, personAdmin)
 
 
 class productAdmin(admin.ModelAdmin):
-    list_display = ("product_name","product_price","product_description","product_image")
+    list_display = ("product_name","product_price","product_description","product_image","id")
 admin.site.register(product, productAdmin)
 
 
 class maleproductAdmin(admin.ModelAdmin):
-    list_display = ("product_name","product_price","product_description","product_image")
+    list_display = ("product_name","product_price","product_description","product_image","id")
 admin.site.register(maleproduct, maleproductAdmin)
 
 class femaleproductAdmin(admin.ModelAdmin):
-    list_display = ("product_name","product_price","product_description","product_image")
+    list_display = ("product_name","product_price","product_description","product_image","id")
 admin.site.register(femaleproduct, femaleproductAdmin)
