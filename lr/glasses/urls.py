@@ -9,7 +9,10 @@ urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
     path("", LoginView.as_view(), name="login"),
     path("home/", HomeView.as_view(), name="home"),
+    path("home/product/<int:image_id>/",ProductView.as_view(),name="product"),  
     path("profile/", ProfileView.as_view(), name="profile"),
+    path("edit/",EditView.as_view(),name="edit"),
+    path("profile/change/",ChangeView.as_view(),name="change"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("forgot/", ForgotView.as_view(), name="forgot"),
     path("otp/", OtpView.as_view(), name="otppage"),
@@ -18,6 +21,7 @@ urlpatterns = [
     path("contact/", ContactView.as_view(), name="contact"),
     path("glass/", GlassView.as_view(), name="glass"),
     path("shop/", ShopView.as_view(), name="shop"),
+   
 
 ]
 if settings.DEBUG:

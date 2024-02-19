@@ -171,8 +171,23 @@ class HomeView(generics.CreateAPIView):
         data=product.objects.all()
         print(data)
         return render(request, self.template_name,context={'datas':data})
+
+
+
+class ProductView(generics.CreateAPIView):
+    renderer_classes=[TemplateHTMLRenderer]
+    template_name='product.html'
+
+
+    def get(self,request,image_id):
+        data=product.objects.filter(id=image_id)
+        maledata=maleproduct.objects.filter(id=image_id)
+        femaledata=femaleproduct.objects.filter(id=image_id)
+        return render(request,self.template_name,context={'datas':data,'maledata':maledata,'femaledata':femaledata})
     
-    
+
+
+
 class LogoutView(APIView):
     permission_classes=(AllowAny,)
     def get(self,request):
@@ -191,7 +206,75 @@ class ProfileView(generics.CreateAPIView):
         username = request.session.get("username")
         data=person.objects.filter(username=username)
         return render(request, self.template_name,context={'datas':data})
+  
     
+    
+class ChangeView(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "changepassword.html"
+
+    def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
+        return render(request, self.template_name)
+    
+    def post(self,request):
+        old_password=request.POST.get("old_password")
+        new_password = request.POST.get("new_password")
+        confirmpassword = request.POST.get("confirm__password")
+        print("old:",old_password)
+        print("new:",new_password)
+        print("con:",confirmpassword)
+        
+        try:
+            user = person.objects.get(password=old_password)
+            
+        except:
+            messages.error(request,"old password not correct")
+            return redirect('change')
+        
+        if new_password == confirmpassword:
+            if user:
+                user.password=new_password
+                user.confirmpassword = confirmpassword
+                user.save()
+                return redirect("profile")
+        else:
+            messages.error(request, "password not match")
+            return redirect("change")
+        
+
+
+class EditView(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "edit.html"
+        
+
+    
+    
+    def post(self,request):
+        username = request.session.get("username")
+        fullname=request.POST.get("fullname")
+        phone=request.POST.get("phone")
+        country=request.POST.get("country")
+        
+        print(fullname,phone,country,username)
+        user = person.objects.get(username=username)
+        
+        if user:
+            user.fullname= fullname
+            user.phone= phone
+            user.country= country
+            user.save()
+            return redirect('profile')
+        
+    def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
+        username = request.session.get("username")
+        user=person.objects.filter(username=username)
+        return render(request, self.template_name,context={'user':user})    
+   
 
 class AboutView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -221,11 +304,8 @@ class ShopView(generics.CreateAPIView):
         if "username" not in request.session:
             return redirect("login")
         data=product.objects.all()
-        print("data", data)
         maledata=maleproduct.objects.all()
-        print("maledata", maledata)
         femaledata=femaleproduct.objects.all()
-        print("femaledata", femaledata)
         return render(request, self.template_name,context={'datas':data,'maledata':maledata,'femaledata':femaledata})
        
 

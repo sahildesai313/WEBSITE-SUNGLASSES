@@ -100,7 +100,8 @@
       </div>
     </header>
     <!-- Middle Section (User Profile) -->
-    {% for x in datas %}
+    <form  method="POST">
+    {% for x in user %}
     <div class="profile-container">
       <div class="profile-picture">
         <img
@@ -108,35 +109,66 @@
           height="220px"
           width="220px"
           alt="{{x.username}}"/>
-          <h3 style="margin-left:150px">{{x.username}} <a href="/edit/">&#9998;</a></h3>
+          <h3 style="margin-left:150px">{{x.username}} </h3>
          
       </div>
       
       <div class="profile-details">
         
-        <table class="profile-table">
-          <tr>
-            <td><strong>Full Name:</strong></td>
-            <td>{{x.fullname}}</td>
-          </tr>
-         
-          <tr>
-            <td><strong>Phone:</strong></td>
-            <td>{{x.phone}}</td>
-          </tr>
-          <tr>
-            <td><strong>Country:</strong></td>
-            <td>{{x.country}}</td>
-          </tr>
-        </table>
-        {% endfor %}
+          {% csrf_token %}
+          <table class="profile-table">
+            <tr>
+              <td><strong>Full Name:</strong></td>
+              <td><input type="text" name="fullname" value="{{x.fullname}}" required></td>
+            </tr>
+          
+            <tr>
+              <td><strong>Phone:</strong></td>
+              <td><input type="text" name="phone" value="{{x.phone}}" required></td>
+            </tr>
+            <tr>
+              <td><strong>Country:</strong></td>
+              <td><input type="text" id="country" name="country" list="countries" value="{{x.country}}" required></td>
+                <datalist id="countries">
+                    <option value="Afghanistan">
+                    <option value="Albania">
+                    <option value="Colombia">
+                    <option value="India">
+                    <option value="United States">
+                    <option value="Chaina">
+                    <option value="Japan">
+                    <option value="Indonesia">
+                    <option value="Pakistan">
+                    <option value="Brazil">
+                    <option value="Nigeria">
+                    <option value="Bangladesh">
+                    <option value="Russia">
+                    <option value="Mexico">
+                    <option value="Japan">
+                    <option value="Philippines">
+                    <option value="Egypt">
+                    <option value="Turkey">
+                    <option value="Iran">
+                    <option value="Germany">
+                    <option value="Thailand">
+                    <option value="United">
+                    <option value="France">
+                    <option value="South">
+                    <option value="Myanmar">
+                    <option value="South">
+                    <option value="Spain">
+                    <option value="Australia">
+                    <option value="Indonesia">
+                </datalist>
+            </tr>
+          </table>
+          {% endfor %}
+        </form>
         <div class="button-container">
-          {% comment %} <div class="input-box button1">
+          <div class="input-box button1">
             <a href="{% url 'profile' %}"><input type="Submit" value="Update" /></a>
-          </div> {% endcomment %}
-          <div class="input-box button">
-            <a href="/profile/change/"><input type="Submit" value="Change Password" /></a>
-          </div>
+          </div> 
+          
         </div>
       </div>
     </div>

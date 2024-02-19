@@ -1,0 +1,48 @@
+{% load static %}
+<DOCTYPE html>
+  <head>
+    <title>
+        Product
+    </title>
+    <link rel="stylesheet"  href="{% static 'product.css' %}">
+  </head>
+
+
+    {% for x in datas %}
+    
+    
+    <body>
+    <div class="card">
+      <img src="{{x.product_image.url}}" alt="">
+      <h1>{{x.product_name}}</h1>
+      <p class="price">${{x.product_price}}</p>
+      <p>{{x.product_description}}</p>
+      <p><button>ORDER NOW</button></p>
+    </div>
+    {% endfor %}
+    {% for x in maledata %}
+
+    <div class="card">
+      <img src="{{x.product_image.url}}" alt="">
+      <h1>{{x.product_name}}</h1>
+      <p class="price">${{x.product_price}}</p>
+      <p>{{x.product_description}}</p>
+      <p><button>ORDER NOW</button></p>
+    </div>
+    {% endfor %}
+
+    {% for x in femaledata %}
+    <div class="card">
+      <img src="{{x.product_image.url}}" alt="">
+      <h1>{{x.product_name}}</h1>
+      <p class="price">${{x.product_price}}</p>
+      <p>{{x.product_description}}</p>
+      <p><button>ORDER NOW</button></p>
+    </div>
+  </body>
+   
+   
+    {% endfor %}
+      
+
+</html>

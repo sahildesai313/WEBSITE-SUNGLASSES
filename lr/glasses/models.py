@@ -46,7 +46,7 @@ class maleproduct(models.Model):
     product_price=models.IntegerField()
     product_description =models.TextField(max_length=250)
     product_image=models.ImageField(upload_to="food",default=None)
-    id=models.AutoField(primary_key=True)
+    id=models.IntegerField(primary_key=True)
     
 
     def __str__(self):
@@ -59,7 +59,7 @@ class femaleproduct(models.Model):
     product_price=models.IntegerField()
     product_description =models.TextField(max_length=250)
     product_image=models.ImageField(upload_to="food",default=None)
-    id=models.AutoField(primary_key=True)
+    id=models.IntegerField(primary_key=True)
     
 
     def __str__(self):
