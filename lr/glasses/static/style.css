@@ -1,3 +1,45 @@
+/* product */
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin-left: 37%;
+  bottom: -90px ;
+  text-align: center;
+  font-family: arial;
+  height: auto;
+  border: 2px solid rgba(109, 73, 73, 0.292);
+}
+
+.price {
+  color: black;
+  font-size: 22px;
+}
+
+.od-button {
+  border-radius: 25%;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.od-button:hover {
+  opacity: 0.7;
+}
+
+img {
+  width: 60%;
+}
+
+/* product end */
+
+/* user Profile */
+
 .profile-container {
   display: flex;
   justify-content: center;
@@ -8,16 +50,16 @@
 
 
 .profile-picture {
-  margin-right: 50px; 
+  margin-right: 50px;
 }
 
 .profile-picture img {
-  width: 400px; 
-  height: auto; 
+  width: 400px;
+  height: auto;
 }
 
 .profile-details {
-  width: 50%; 
+  width: 50%;
   max-width: 700px;
   background-color: #ffffff;
   padding: 20px;
@@ -115,6 +157,8 @@ body {
   color: #bcc4f2;
 }
 
+/*Profile end*/
+
 /*header section*/
 .hero_area {
   height: 100vh;
@@ -196,6 +240,7 @@ a:focus {
   color: #d7cff4;
   text-transform: uppercase;
 }
+
 .custom_nav-container {
   z-index: 99999;
   padding: 15px 0;
@@ -245,8 +290,9 @@ a:focus {
   align-items: center;
   background-image: url(images/homepage.jpg);
   background-size: 100% 100%;
-  
+
 }
+
 .slider_section .glass {
   position: absolute;
   right: 25px;
@@ -270,8 +316,8 @@ a:focus {
   text-transform: uppercase;
   font-size: 3.5rem;
   color: #0e020c;
-  font-weight: bold;  
-  margin-left: -120px; 
+  font-weight: bold;
+  margin-left: -120px;
 
 }
 
@@ -280,14 +326,14 @@ a:focus {
   font-size: 3rem;
   font-weight: bold;
   color: #ffffff;
-  margin-left: -20px; 
+  margin-left: -20px;
 
 }
 
 
 .slider_section .detail-box .btn-box {
   margin-top: 35px;
-  
+
 }
 
 .slider_section .detail-box .btn-box a {
@@ -309,7 +355,7 @@ a:focus {
 
 .slider_section #carouselExampleIndicators {
   width: 100%;
-  
+
 }
 
 .slider_section .carousel-indicators {
@@ -320,12 +366,12 @@ a:focus {
   margin: 0;
   bottom: 45px;
   right: 45px;
-  
+
 }
 
 .slider_section .carousel-indicators span {
   margin: 0 2px;
-  
+
 }
 
 .slider_section .carousel-indicators li {
@@ -782,7 +828,7 @@ a:focus {
   border-top: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.info_section .row > div {
+.info_section .row>div {
   margin-top: 45px;
   margin-bottom: 45px;
 }
@@ -861,6 +907,7 @@ a:focus {
 }
 
 /* end info section */
+
 /* footer section*/
 .footer_section {
   font-weight: 500;
@@ -871,7 +918,7 @@ a:focus {
   -ms-flex-pack: center;
   justify-content: center;
   background-color: #bcc4f2;
-  padding: 20px;
+  padding: 10px;
 }
 
 .footer_section p {
@@ -883,4 +930,3 @@ a:focus {
 .footer_section a {
   color: #000000;
 }
-

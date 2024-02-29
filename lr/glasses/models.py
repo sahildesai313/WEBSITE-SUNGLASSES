@@ -4,78 +4,70 @@ from django.db import models
 
 from django.db import models
 
+
 class person(models.Model):
     GENDER_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other'),
+        ("M", "Male"),
+        ("F", "Female"),
+        ("O", "Other"),
     ]
 
     username = models.CharField(max_length=150, unique=True)
     fullname = models.CharField(max_length=150, default="")
     email = models.EmailField(default="")
-    phone = models.CharField(max_length=10, default="")  
+    phone = models.CharField(max_length=10, default="")
     password = models.CharField(max_length=100, default="")
     confirmpassword = models.CharField(max_length=100, default="")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default="")
-    otp=models.CharField(max_length=4,default='', null=True, blank=True)
-    country = models.CharField(max_length=10,default="")
+    otp = models.CharField(max_length=4, default="", null=True, blank=True)
+    country = models.CharField( max_length=10, default="")
 
     def __str__(self):
         return f"{self.username} {self.fullname} {self.email} {self.phone} {self.gender} {self.country}"
 
 
-
-
 class product(models.Model):
-    product_name=models.CharField(max_length=250)
-    product_price=models.IntegerField()
-    product_description =models.TextField(max_length=250)
-    product_image=models.ImageField(upload_to="food",default=None)
-    id=models.AutoField(primary_key=True)
-    
+    product_name = models.CharField(max_length=250)
+    product_price = models.IntegerField()
+    product_description = models.TextField(max_length=250)
+    product_image = models.ImageField(upload_to="food", default=None)
+    id = models.AutoField(primary_key=True)
 
     def __str__(self):
         return f"{self.product_name}{self.product_price}{self.product_description}{self.product_image}{self.id}"
-    
-    
-    
-    
+
+
 class maleproduct(models.Model):
-    product_name=models.CharField(max_length=250)
-    product_price=models.IntegerField()
-    product_description =models.TextField(max_length=250)
-    product_image=models.ImageField(upload_to="food",default=None)
-    id=models.IntegerField(primary_key=True)
-    
+    product_name = models.CharField(max_length=250)
+    product_price = models.IntegerField()
+    product_description = models.TextField(max_length=250)
+    product_image = models.ImageField(upload_to="food", default=None)
+    id = models.IntegerField(primary_key=True)
 
     def __str__(self):
         return f"{self.product_name}{self.product_price}{self.product_description}{self.product_image}{self.id}"
-    
-    
+
 
 class femaleproduct(models.Model):
-    product_name=models.CharField(max_length=250)
-    product_price=models.IntegerField()
-    product_description =models.TextField(max_length=250)
-    product_image=models.ImageField(upload_to="food",default=None)
-    id=models.IntegerField(primary_key=True)
-    
+    product_name = models.CharField(max_length=250)
+    product_price = models.IntegerField()
+    product_description = models.TextField(max_length=250)
+    product_image = models.ImageField(upload_to="food", default=None)
+    id = models.IntegerField(primary_key=True)
 
     def __str__(self):
         return f"{self.product_name}{self.product_price}{self.product_description}{self.product_image}{self.id}"
-    
 
 
 
-class Address(models.Model):
-    addressline1=models.CharField(max_length=250)
-    addressline2=models.CharField(max_length=250)
-    pincode=models.IntegerField()
-    city=models.CharField(max_length=25)
-    state=models.CharField(max_length=25)
 
+class addressdetils(models.Model):
+    locality = models.CharField(max_length=50)
+    address = models.CharField(max_length=200)
+    pincode = models.IntegerField()
+    city = models.CharField(max_length=10)
+    state = models.CharField(max_length=10)
 
-    def __str_(self):
-        return f"{self.addressline1}{self.addressline2}{self.pincode}{self.city}{self.state}"
-    
+    def __str__(self):
+        return f"{self.locality} {self.address} {self.pincode} {self.city} {self.state}"
+

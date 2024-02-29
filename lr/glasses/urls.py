@@ -21,8 +21,9 @@ urlpatterns = [
     path("contact/", ContactView.as_view(), name="contact"),
     path("glass/", GlassView.as_view(), name="glass"),
     path("shop/", ShopView.as_view(), name="shop"),
-    path("address/",AddressView.as_view(),name="Address"),
-   
+    path("address/", Addressdetails.as_view(), name="Addressdetails"),
+ 
+
 
 ]
 if settings.DEBUG:
