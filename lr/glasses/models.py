@@ -64,3 +64,18 @@ class femaleproduct(models.Model):
 
     def __str__(self):
         return f"{self.product_name}{self.product_price}{self.product_description}{self.product_image}{self.id}"
+    
+
+
+
+class Address(models.Model):
+    addressline1=models.CharField(max_length=250)
+    addressline2=models.CharField(max_length=250)
+    pincode=models.IntegerField()
+    city=models.CharField(max_length=25)
+    state=models.CharField(max_length=25)
+
+
+    def __str_(self):
+        return f"{self.addressline1}{self.addressline2}{self.pincode}{self.city}{self.state}"
+    

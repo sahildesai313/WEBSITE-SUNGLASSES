@@ -248,7 +248,12 @@ class ChangeView(APIView):
 class EditView(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "edit.html"
-        
+    def get(self, request):
+        if "username" not in request.session:
+            return redirect("login")
+        username = request.session.get("username")
+        user=person.objects.filter(username=username)
+        return render(request, self.template_name,context={'user':user})    
 
     
     
@@ -268,12 +273,7 @@ class EditView(APIView):
             user.save()
             return redirect('profile')
         
-    def get(self, request):
-        if "username" not in request.session:
-            return redirect("login")
-        username = request.session.get("username")
-        user=person.objects.filter(username=username)
-        return render(request, self.template_name,context={'user':user})    
+   
    
 
 class AboutView(generics.CreateAPIView):
@@ -307,7 +307,15 @@ class ShopView(generics.CreateAPIView):
         maledata=maleproduct.objects.all()
         femaledata=femaleproduct.objects.all()
         return render(request, self.template_name,context={'datas':data,'maledata':maledata,'femaledata':femaledata})
-       
+
+
+class AddressView(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "address.html"
+
+    def get(self,request):
+        return render(request,self.template_name)
+
 
 
 class GlassView(generics.CreateAPIView):
