@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import person
+from .models import *
 import random
 
 
@@ -14,7 +14,16 @@ class personSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = person
-        fields = ["username","fullname","email","phone","password","confirmpassword","gender","country",]
+        fields = [
+            "username",
+            "fullname",
+            "email",
+            "phone",
+            "password",
+            "confirmpassword",
+            "gender",
+            "country",
+        ]
 
     def create(self, validated_data):
         gender = validated_data.pop("gender")
@@ -23,8 +32,9 @@ class personSerializer(serializers.ModelSerializer):
 
 
 class forgetserializer(serializers.ModelSerializer):
-   
+
     class Meta:
-        model = person 
-        fields = '__all__'
-     
+        model = person
+        fields = "__all__"
+
+
