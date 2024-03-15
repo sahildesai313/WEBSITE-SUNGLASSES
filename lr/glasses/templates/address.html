@@ -1,4 +1,4 @@
-  {% load static %}
+{% load static %}
 
   <!DOCTYPE html>
   <html lang="en">
@@ -206,72 +206,47 @@
 
   <!-- address detils -->
 
-    <div class="container" method="post">
-    {% csrf_token %}
+    <div class="container">
+    
 
       <h1>Shipping</h1>
       <p>Please enter your shipping details.</p>
       <hr />
-    <form > 
+      
+    <form  action="{% url 'Address' %}" method="post"> 
+      {% csrf_token %}
       <div class="for" >
-
-          <label class="field">
-            <span class="field__label" for="name">name</span>
-            <input class="field__input" type="text" id="name" value="" />
-          </label>
-  
-        <div class="fields fields--2">
-
-          <label class="field">
-            <span class="field__label" for="Email">Email</span>
-            <input class="field__input" type="text" id="Email" value="" />
-          </label>
-
-          <label class="field">
-            <span class="field__label" for="phone">Phone</span>
-            <input class="field__input" type="text" id="phone" value="" />
-          </label>
-        </div>
 
         <div class="fields fields--2">
 
           <label class="field">
             <span class="field__label" for="locality">locality</span>
-            <input class="field__input" type="text" id="locality" />
+            <input class="field__input" type="text" name="locality" required>
           </label>
+
           <label class="field">
             <span class="field__label" for="address">Address</span>
-            <input class="field__input" type="text" id="address" />
+            <input class="field__input" type="text" name="address" required>
           </label>
         </div>
+
         <div class="fields fields--2">
           <label class="field">
             <span class="field__label" for="zipcode">Pin code</span>
-            <input class="field__input" type="text" id="pincode" />
+            <input class="field__input" type="text" name="pincode" required>
           </label>
           <label class="field">
             <span class="field__label" for="city">City</span>
-            <input class="field__input" type="text" id="city" />
+            <input class="field__input" type="text" name="city" required>
           </label>
         </div>
         <div class="fields fields--2">
 
           <label class="field">
             <span class="field__label" for="state">State</span>
-            <select class="field__input" id="state">
-              <option value="">New youk</option>
-              <option value="">Gujart</option>
-
-            </select>
+            <input class="field__input" type="text" name="state" required>
           </label>  
 
-          <label class="field">
-            <span class="field__label" for="country">Country</span>
-            <select class="field__input" id="country">
-              <option value="unitedstates">United States</option>
-              <option value="India">India</option>
-            </select>
-          </label>
         </div>
 
       </div>
@@ -294,3 +269,4 @@
 
   </body>
   </html>
+

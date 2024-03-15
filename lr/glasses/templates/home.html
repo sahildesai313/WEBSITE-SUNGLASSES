@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load rest_framework %}
 <html>
   {% load static %}
 
@@ -75,8 +76,7 @@
                 <ul class="navbar-nav">
                   <li class="nav-item active">
                     <a class="nav-link" href="{% url 'home' %}"
-                      >Home <span class="sr-only">(current)</span></a
-                    >
+                      >Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -105,12 +105,12 @@
                     alt=""
                   />
                 </a>
-                <form class="form-inline">
+                {% comment %} <form class="form-inline">
                   <button
                     class="btn my-2 my-sm-0 nav_search-btn"
                     type="submit"
                   ></button>
-                </form>
+                </form> {% endcomment %}
               </div>
             </div>
           </nav>
@@ -125,8 +125,7 @@
         <div
           id="carouselExampleIndicators"
           class="carousel slide"
-          data-ride="carousel"
-        >
+          data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="container">
@@ -208,13 +207,13 @@
         </div>
 
         <div class="glass_container">
-          {% for x in datas %}
+          {% for x in Product_details %}
           <div class="box">
             <div class="img-box">
-              <img src="{{x.product_image.url}}" alt="" />
+              <img src="{{x.image.url}}" alt="" />
             </div>
             <div class="product">
-              <h6>{{x.product_price}}$</h6>
+              <h6>{{x.price}}$</h6>
               <a href="/home/product/{{x.id}}/"> Buy Now </a>
             </div>
           </div>

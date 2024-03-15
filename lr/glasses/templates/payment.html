@@ -1,0 +1,625 @@
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-div {
+            background-color: white;
+            width: 1133px;
+            height: 700px;
+            margin-left: auto;
+            margin-top: -30px;
+            margin-right: auto;
+        }
+
+        .payment-data {
+            background-color: #5cc3d1;
+            border-radius: 20px;
+            width: 388px;
+            height: 640px;
+            margin-top: 10px;
+            margin-left: 708px;
+        }
+
+        .header {
+            display: flex;
+        }
+
+        .card-detalis {
+            padding-top: 27px;
+            margin-left: 19px;
+            color: #000000;
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 33px;
+            font-family: poppins;
+        }
+
+        .card-owner {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            margin-left: 185px;
+            margin-top: 19px;
+
+        }
+
+        .card-type-label {
+            color: #000000;
+            font-family: 'Nunito';
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21.82px;
+            width: 94px;
+            height: 22px;
+            position: relative;
+            top: 24px;
+            left: 19px;
+        }
+
+        .img-payment-1 {
+            width: 75px;
+            height: 55px;
+            position: relative;
+            top: 40px;
+            left: 20px;
+            border-radius: 5px;
+            margin-right: 18px;
+
+        }
+
+        .img-payment-2 {
+            width: 75px;
+            height: 55px;
+            position: relative;
+            top: 40px;
+            left: 13px;
+            border-radius: 5px;
+            margin-right: 18px;
+
+
+        }
+
+        .img-payment-3 {
+            width: 75px;
+            height: 55px;
+            position: relative;
+            top: 40px;
+            left: 5px;
+            border-radius: 5px;
+        }
+
+        .img-payment-4 {
+            width: 75px;
+            height: 55px;
+            position: relative;
+            top: 18px;
+            border: 1px solid black;
+            padding: 18px;
+            left: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            background-color: #D9D9D9 20%;
+            color: white;
+        }
+
+        .name-label {
+            position: relative;
+            top: 57px;
+            left: 19px;
+            color: #000000;
+            font-family: 'Nunito';
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21.82px;
+            width: 94px;
+            height: 22px;
+        }
+
+        .name-input {
+            width: 350px;
+            height: 40px;
+            border-radius: 6px;
+            background-color: #ffffff;
+            display: block;
+            position: relative;
+            top: 57px;
+            left: 19px;
+            padding-left: 19px;
+            color: #000000;
+            border: none;
+        }
+
+        .card-number-label {
+            position: relative;
+            top: 70px;
+            left: 19px;
+            color: #000000;
+            font-family: 'Nunito';
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21.82px;
+            width: 94px;
+            height: 22px;
+        }
+
+        .card-number-input {
+            width: 350px;
+            height: 40px;
+            border-radius: 6px;
+            background-color: #ffffff;
+            display: block;
+            position: relative;
+            top: 70px;
+            left: 19px;
+            padding-left: 19px;
+            color: #000000;
+            border: none;
+        }
+
+        .div {
+
+            margin-top: 100px;
+        }
+
+        .div1 {
+            display: grid;
+            width: 100%;
+            height: 40px;
+        }
+
+        .div2 {
+            display: grid;
+            width: 100%;
+            height: 40px;
+        }
+
+        .CVV {
+            width: 40%;
+            height: 40px;
+            background-color: #ffffff;
+            border: none;
+            margin-top: 20px;
+            color: #000000;
+            position: relative;
+            top: -60px;
+            left: 200px;
+            border-radius: 5px;
+            padding-left: 20px;
+        }
+
+        .Expiration-date {
+            width: 40%;
+            background-color: #ffffff;
+            border: none;
+            height: 40px;
+            ;
+            color: #000000;
+            position: relative;
+            top: 0;
+            left: 20px;
+            border-radius: 5px;
+            padding-left: 20px;
+
+
+        }
+
+        .CVV-label {
+            position: relative;
+            bottom: 37px;
+            left: 200px;
+            color: #000000;
+            font-family: 'Nunito';
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21.82px;
+            width: 94px;
+            height: 22px;
+
+        }
+
+
+
+        .Expiration-label {
+            position: relative;
+            top: 0;
+            left: 19px;
+            color: #000000;
+            font-family: 'Nunito';
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21.82px;
+            width: 40%;
+            height: 22px;
+        }
+
+        .hr {
+            border-color: #5F65C3;
+            width: 350px;
+            position: relative;
+            left: 19px;
+
+        }
+
+        .button {
+            width: 190px;
+            height: 50px;
+            border-radius: 12px;
+            position: relative;
+            top: 2%;
+            left: 22px;
+            font: 400px;
+            background-color: #decfcf;
+        }
+
+        .button input {
+            color: #000000;
+            letter-spacing: 1px;
+            height: 50px;
+            width: 150px;
+            border: none;
+            background: #ffffff;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            border-radius: 10px;
+            margin-left: -40px;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        .button input:hover {
+            background-color: #000000;
+            color: white;
+        }
+
+        .checkout-image-1 {
+            width: 25px;
+            height: 25px;
+            position: relative;
+            top: 50px;
+
+
+        }
+
+        .checkout-image-2 {
+            width: 25px;
+            height: 25px;
+            position: relative;
+            top: -7px;
+            left: 250px;
+            background-color: white;
+
+        }
+
+        .hover-2 {
+            text-decoration: none;
+            color: #ffffff;
+            position: relative;
+            left: 240px;
+            top: -15px;
+
+        }
+
+        .total {
+            width: 138px;
+            height: 24px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            font-family: "poppins";
+            position: relative;
+            top: 20px;
+            left: 20px;
+            color: white;
+        }
+
+        .one {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .a {
+            width: 50%;
+
+            height: 100px;
+        }
+
+        .b {
+            width: 50%;
+
+            height: 100px;
+        }
+
+        .inc1 {
+            margin-top: 10px;
+            margin-left: 19px;
+            color: #000000;
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 500;
+            font-family: poppins;
+        }
+
+        .inc2 {
+            margin-top: 10px;
+            margin-right: 19px;
+            color: #FEFCFC;
+            text-align: right;
+            font-size: 14px;
+            line-height: 21px;
+            font-weight: 500;
+            font-family: poppins;
+        }
+
+        .hover-1 {
+            text-decoration: none;
+            font-family: poppins;
+            width: 190px;
+            height: 27px;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 600;
+            color: #1E1E1E;
+            position: relative;
+            top: 43px;
+
+        }
+
+        .hr-1 {
+            width: 608px;
+            position: relative;
+            top: 60px;
+        }
+
+        .cart-1 {
+            width: 215px;
+            height: 19px;
+            position: relative;
+            top: 100px;
+
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19.1px;
+        }
+
+        .cart {
+            width: 190px;
+            height: 27px;
+            position: relative;
+            top: 100px;
+
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+        }
+
+        .italy-pizza {
+            width: 608px;
+            height: 100px;
+            background-color: red;
+            border-radius: 15px;
+            position: relative;
+            top: 130px;
+
+        }
+
+        .combo-plate {
+            width: 608px;
+            height: 100px;
+            background-color: yellow;
+            border-radius: 15px;
+            position: relative;
+            top: 160px;
+        }
+
+        .spanish-rice {
+            width: 608px;
+            height: 100px;
+            background-color: yellowgreen;
+            border-radius: 15px;
+            position: relative;
+            top: 190px;
+        }
+
+        .img1 {
+            width: 80px;
+            height: 82.29px;
+            position: relative;
+            left: 10px;
+            top: 8px;
+        }
+
+
+        .img2 {
+            width: 80px;
+            height: 82.29px;
+            position: relative;
+            left: 10px;
+            top: 8px;
+        }
+
+
+        .img3 {
+            width: 80px;
+            height: 82.29px;
+            position: relative;
+            left: 10px;
+            top: 8px;
+        }
+
+        .italy-pizza-name-1 {
+            font-family: poppins;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            width: 190px;
+            height: 27px;
+            position: relative;
+            bottom: 65px;
+            left: 110px;
+            color: #1E1E1E;
+        }
+
+        .italy-pizza-name-extra-1 {
+            font-family: Nunito;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19.1px;
+            color: #1E1E1E;
+            width: 164px;
+            height: 19px;
+            position: relative;
+            bottom: 65px;
+            left: 110px;
+
+        }
+
+        .italy-pizza-name-2 {
+            font-family: poppins;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            width: 190px;
+            height: 27px;
+            position: relative;
+            bottom: 65px;
+            left: 110px;
+            color: #1E1E1E;
+
+        }
+
+        .italy-pizza-name-extra-2 {
+            font-family: Nunito;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19.1px;
+            color: #1E1E1E;
+            width: 164px;
+            height: 19px;
+            position: relative;
+            bottom: 65px;
+            left: 110px;
+        }
+
+        .italy-pizza-name-3 {
+            font-family: poppins;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            width: 190px;
+            height: 27px;
+            position: relative;
+            bottom: 65px;
+            left: 110px;
+            color: #1E1E1E;
+        }
+
+        .italy-pizza-name-extra-3 {
+            font-family: Nunito;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 19.1px;
+            color: #1E1E1E;
+            width: 164px;
+            height: 19px;
+            position: relative;
+            bottom: 65px;
+            left: 110px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main-div">
+        <div class="Payment">
+
+            <div class="head">
+                <img class=""><a class="hover-1" href="/shop/">Shopping Continue</a>
+            </div>
+            <hr class="hr-1">
+
+
+
+        </div>
+        <form action="{% url 'payment'%}" method="post">
+            <div class="payment-data">
+                <header class="header">
+                    <h3 class="card-detalis">Card Details</h3><img
+                        src="https://png.pngtree.com/png-clipart/20230913/original/pngtree-profile-picture-vector-png-image_11063301.png"
+                        class="card-owner">
+                </header>
+
+                <label class="card-type-label">Card type</label>
+                {% if messages %}
+                <div class="messages">
+                    <ul>
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" style="margin-left:200px; color:red;" {%endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                <div>
+                    <a href="#"><img
+                            src="https://freepngimg.com/thumb/credit_card/25637-6-credit-card-visa-and-master-card-transparent-image.png"
+                            class="img-payment-2"></a>
+                    <a href="#"><img
+                            src="https://d28wu8o6itv89t.cloudfront.net/images/Visadebitcardpng-1599584312349.png"
+                            class="img-payment-2"></a>
+                    <a href="#"><img
+                            src="data:image/png;base64,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"
+                            class="img-payment-3"></a>
+                    <a href="#" class="img-payment-4">see all</a>
+                </div>
+
+                <label class="name-label">Name on card</label>
+                <input type="text" id="name" name="nameoncard" placeholder="Name" class="name-input" required>
+
+                <label class="card-number-label">Card Number</label>
+                <input type="text" id="name" name="cardno" placeholder="1111 2222 3333 4444" class="card-number-input"required>
+
+                <div class="div">
+                    <div class="div1">
+                        <label class="Expiration-label">Expiration date</label>
+                        <input class="Expiration-date" type="text" name="date" placeholder="mm/yy" required>
+                    </div>
+
+                    <div class="div2">
+                        <label class="CVV-label">CVV</label>
+                        <input class="CVV" type="text" id="cvv" name="cvv" placeholder="123" required>
+                    </div>
+                </div>
+
+                <hr class="hr">
+
+                <div class="one">
+                    <div class="a">
+                        <p class="inc1">Subtotal</p>
+                        <p class="inc1">Shipping</p>
+                        <p class="inc1">Total (Tax incl.)</p>
+                    </div>
+
+                    <div class="b">
+                        <p class="inc2">$1,668</p>
+                        <p class="inc2">$4</p>
+                        <p class="inc2">$1,672</p>
+                    </div>
+                </div>
+                <div class="button">
+                    <a class="hover-2" href="/home"><input type="Submit" value="Cheackout"></a>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

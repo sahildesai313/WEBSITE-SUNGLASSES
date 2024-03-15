@@ -6,8 +6,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path("register/", RegisterView.as_view(), name="register"),
     path("", LoginView.as_view(), name="login"),
+    path("register/", RegisterView.as_view(), name="register"),
     path("home/", HomeView.as_view(), name="home"),
     path("home/product/<int:image_id>/",ProductView.as_view(),name="product"),  
     path("profile/", ProfileView.as_view(), name="profile"),
@@ -21,9 +21,10 @@ urlpatterns = [
     path("contact/", ContactView.as_view(), name="contact"),
     path("glass/", GlassView.as_view(), name="glass"),
     path("shop/", ShopView.as_view(), name="shop"),
-    path("address/", Addressdetails.as_view(), name="Addressdetails"),
- 
-
+    path("address/", AddressdetailsView.as_view(), name="Address"),
+    path("payment/", PaymentView.as_view(), name="payment"),
+    path("thank/", ThankView.as_view(), name="thank"),
+    
 ]
 if settings.DEBUG:
         urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
