@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'style.css' %}" />
@@ -17,22 +16,18 @@
 
     <script
       type="text/javascript"
-      src="{% static 'static/bootstrap.js'%}"
-    ></script>
+      src="{% static 'static/bootstrap.js'%}"></script>
     <script
       type="text/javascript"
-      src="{% static 'static/custom.js'%}"
-    ></script>
+      src="{% static 'static/custom.js'%}"></script>
     <script
       type="text/javascript"
-      src="{% static 'static/jquery-3.4.1.min.js' %}"
-    ></script>
+      src="{% static 'static/jquery-3.4.1.min.js' %}"></script>
 
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css"/>
 
     <!-- fonts style -->
     <link
@@ -101,20 +96,29 @@
     </header>
     <!-- Middle Section (User Profile) -->
     <form  method="POST">
-    {% for x in user %}
-    <div class="profile-container">
-      <div class="profile-picture">
-        <img
+      {% for x in person_details %}
+      <div class="profile-container">
+        <div class="profile-picture">
+          <img
           src="https://png.pngtree.com/png-clipart/20230913/original/pngtree-profile-picture-vector-png-image_11063301.png"
           height="220px"
           width="220px"
-          alt="{{x.username}}"/>
+          alt=""/>
           <h3 style="margin-left:150px">{{x.username}} </h3>
-         
-      </div>
-      
-      <div class="profile-details">
+          
+        </div>
         
+        <div class="profile-details">
+          
+      {% if messages %}
+      <div class="messages">
+          <ul>
+              {% for message in messages %}
+                  <li {% if message.tags %} class="{{ message.tags }}" style="margin-left:170px;  color:red;" {% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+      </div>
+  {% endif %}
           {% csrf_token %}
           <table class="profile-table">
             <tr>
@@ -124,7 +128,7 @@
           
             <tr>
               <td><strong>Phone:</strong></td>
-              <td><input type="text" name="phone" value="{{x.phone}}" required></td>
+              <td><input type="text" name="phone" value="{{x.phone}}"  maxlength="10" required></td>
             </tr>
             <tr>
               <td><strong>Country:</strong></td>

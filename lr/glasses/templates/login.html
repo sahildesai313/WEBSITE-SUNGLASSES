@@ -1,4 +1,6 @@
 {% load static %}
+{% load rest_framework %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,6 @@
 <body>
   <div class="container">
       <h1>Login</h1>
-      {% if messages %}
       <div class="messages">
           <ul>
               {% for message in messages %}
@@ -17,7 +18,7 @@
               {% endfor %}
           </ul>
       </div>
-  {% endif %}
+  
       <form  method="post" action="{% url 'login' %}">
           <p style="text-align: center;margin-top: 27px;color: rgb(5, 217, 83);">{{error}}</p>
           {% csrf_token %}

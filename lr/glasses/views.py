@@ -1,284 +1,217 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.http.request import HttpRequest
+from django.core.mail import EmailMessage
+
+
+
+from rest_framework.permissions import AllowAny
+from rest_framework import generics, serializers
+from rest_framework.views import APIView
+from rest_framework.generics import GenericAPIView
+from rest_framework.request import Request
 from rest_framework import generics, status
 from rest_framework.response import Response
-from .serializers import *
+
+from .serializers import PersonSerializer, Forgetserializer, Addressserializer, Loginserializer, ResetSerializer, OtpSerializer, ChangeSerializer, EditProfileSerializer, PaymentSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
-from django.contrib import messages
+
 import random
-from django.core.mail import EmailMessage
-from .models import *
-from rest_framework.permissions import AllowAny
-from rest_framework.views import APIView
+from .models import Person, Product, Address, Card
+from typing import Union
+
 
 
 class RegisterView(generics.CreateAPIView):
-    serializer_class = personSerializer
+    serializer_class = PersonSerializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "register.html"
 
-    def get(self, request):
+    def get(self, request: Union[Request, HttpRequest]) -> Union[render, redirect]:
         if "username" in request.session:
             return redirect("home")
-        serializer = personSerializer()
+        serializer = PersonSerializer()
         return render(request, self.template_name, {"serializer": serializer})
 
-    def post(self, request):
-        username = request.data.get("username")
-        phone = request.data.get("phone")
-        if person.objects.filter(username=username).exists():
-            messages.error(request, "Username already exists")
-            return redirect("register")
-
-        if len(phone) != 10:
-            messages.error(request, "phone number is not Valid")
-            return redirect("register")
-
-        serializer = self.get_serializer(data=request.data)
+    def post(self, request: Union[Request, HttpRequest]) -> Union[redirect, render]:
+        serializer = PersonSerializer(data=request.data)
         if serializer.is_valid():
-            phone = serializer.validated_data.get("phone")
-            password = serializer.validated_data.get("password")
-            confirm_password = serializer.validated_data.get("confirmpassword")
-
-            if password != confirm_password:
-                messages.error(request, "Passwords do not match")
-                return redirect("register")
             serializer.save()
-            return redirect("login")
-        return render(request, self.template_name, {"serializer": serializer})
+            return redirect("login")    
+        messages.error(request, serializer.errors['non_field_errors'][0])
+        return render(request, self.template_name)
+    
 
-
-class LoginView(generics.CreateAPIView):
-    serializer_class = personSerializer
+class LoginView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = Loginserializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "login.html"
 
-    def get(self, request):
+    def get(self, request: Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" in request.session:
-            return redirect("home")
+              return redirect("home")
         return render(request, self.template_name)
 
-    def post(self, request):
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-
-        if username and password:
-            user = person.objects.filter(username=username).first()
-            if user and user.password == password:
-                messages.success(request, "Login successful")
-                request.session["username"] = username
-                return redirect("home")
-            else:
-                messages.error(request, "Invalid Username or Password")
-                return redirect("login")
-        else:
-
-            return render(request, self.template_name)
-
+    def post(self, request: Union[Request, HttpRequest])  -> Union[render, redirect]:
+        serializer = Loginserializer(data=request.data) 
+        if serializer.is_valid():
+            username = serializer.data.get('username')
+            request.session['username'] = username
+            return redirect("home")
+        messages.error(request, serializer.errors['non_field_errors'][0])
+        return render(request, self.template_name)
+    
+      
 
 class ForgotView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     tempalte_name = "forgot.html"
 
-    def get(self, request):
+    def get(self, request: Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" in request.session:
             return redirect("home")
         return render(request, self.tempalte_name)
 
-    def post(self, request):
-        email = request.POST.get("email")
-        print("email:", email)
-        try:
-            user = person.objects.filter(email=email)
-            request.session["email"] = email
-            print(user)
-        except:
+    def post(self, request: Union[Request, HttpRequest])  ->  redirect:
+        serializer = Forgetserializer(data = request.data)
+        if not serializer.is_valid():
+            messages.error(request, serializer.errors['non_field_errors'][0])
             return redirect("forgot")
+        email =serializer.data['email']
+        otp = str(random.randint(1000, 9999))
+        request.session["email"] = email
+        request.session["otp"] = otp
+        email = EmailMessage(body=otp, to=[email])
+        email.send()
+        return redirect("otppage")
 
-        if user:
-            otp = str(random.randint(1000, 9999))
-            request.session["otp"] = otp
-            print("otp :", otp)
-            email = EmailMessage(body=otp, to=[email])
-            email.send()
-            return redirect("otppage")
-        else:
-            messages.error(request, "Email Not Valid")
-            return redirect("forgot")
-
+        
 
 class OtpView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "otp.html"
+    serializer_class = OtpSerializer
 
-    def get(self, request):
-        if "username" in request.session:
+    def get(self, request: Union[Request, HttpRequest])  -> Union[render, redirect]:
+        if "usernameCreateAPIView" in request.session:
             return redirect("home")
         return render(request, self.template_name)
 
-    def post(self, request):
-        enter_otp = request.POST.get("enter_otp")
+    def post(self, request: Union[Request, HttpRequest])  ->  redirect:
         otp = request.session.get("otp")
-        if otp != enter_otp:
-            messages.error(request, " Invalid OTP")
+        serializer = OtpSerializer(data = request.data,context={'otp': otp})
+        if not serializer.is_valid():
+            messages.error(request, serializer.errors['non_field_errors'][0])
             return redirect("otppage")
-        else:
-            return redirect("reset")
+        return redirect("reset")
 
 
-class ResetView(generics.CreateAPIView):
+class ResetView(GenericAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "reset.html"
+    serializer_class = ResetSerializer  
 
-    def get(self, request):
+    def get(self, request: Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" in request.session:
             return redirect("home")
         return render(request, self.template_name)
 
-    def post(self, request):
-        new_password = request.POST.get("new_password")
-        confirmpassword = request.POST.get("confirm__password")
-        print("new_password:", new_password)
-        print("confirm_password:", confirmpassword)
-        email = request.session.get("email")
-
-        if new_password == confirmpassword:
-            try:
-                user = person.objects.filter(email=email).first()
-                user.password = new_password
-                user.confirmpassword = confirmpassword
-                user.save()
-                return redirect("login")
-            except person.DoesNotExist:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-        else:
-            messages.error(request, "password not match")
-            return redirect("reset")
-
-
+    def post(self, request:  Union[Request, HttpRequest])  ->  redirect:
+        email= request.session.get('email')
+        serializer = ResetSerializer(data = request.data, context={'email_id': email})
+        if not serializer.is_valid():
+            messages.error(request, serializer.errors['non_field_errors'][0])
+            return redirect('reset')
+        return redirect("login")
+        
+            
 class HomeView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "home.html"
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest]) -> Union[render, redirect] :
         if "username" not in request.session:
             return redirect("login")
-        data = product.objects.all()
-        print(data)
-        return render(request, self.template_name, context={"datas": data})
-
-
-class ProductView(generics.CreateAPIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = "product.html"
-
-    def get(self, request, image_id):
-        data = product.objects.filter(id=image_id)
-        maledata = maleproduct.objects.filter(id=image_id)
-        femaledata = femaleproduct.objects.filter(id=image_id)
-        return render(
-            request,
-            self.template_name,
-            context={"datas": data, "maledata": maledata, "femaledata": femaledata},
-        )
-
-
-class LogoutView(APIView):
-    permission_classes = (AllowAny,)
-
-    def get(self, request):
-        del request.session["username"]
-        return redirect("login")
+        Product_details = Product.objects.all()
+        return render(request, self.template_name, context={"Product_details": Product_details})
 
 
 class ProfileView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "profile.html"
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> render:
         if "username" not in request.session:
             return redirect("login")
         username = request.session.get("username")
-        data = person.objects.filter(username=username)
-        return render(request, self.template_name, context={"datas": data})
-   
+        Person_details = Person.objects.filter(username=username)        
+        return render(request, self.template_name, context={"details": Person_details})
+
+
+class ProductView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "product.html"
+
+    def get(self, request:  Union[Request, HttpRequest], image_id)  -> render:
+        Product_details = Product.objects.filter(id=image_id)
+        return render(request, self.template_name, context={"Product_details": Product_details})
+
+
+class LogoutView(APIView):
+    permission_classes = (AllowAny,)
+
+    def get(self, request:  Union[Request, HttpRequest])  ->  redirect:
+        del request.session["username"]
+        return redirect("login")
+
 
 class ChangeView(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "changepassword.html"
+    serializers = ChangeSerializer
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" not in request.session:
             return redirect("login")
         return render(request, self.template_name)
 
-    def post(self, request):
-        old_password = request.POST.get("old_password")
-        new_password = request.POST.get("new_password")
-        confirmpassword = request.POST.get("confirm__password")
-        print("old:", old_password)
-        print("new:", new_password)
-        print("con:", confirmpassword)
-
-        try:
-            user = person.objects.get(password=old_password)
-
-        except:
-            messages.error(request, "old password not correct")
-            return redirect("change")
-
-        if new_password == confirmpassword:
-            if user:
-                user.password = new_password
-                user.confirmpassword = confirmpassword
-                user.save()
-                return redirect("profile")
-        else:
-            messages.error(request, "password not match")
-            return redirect("change")
+    def post(self, request:  Union[Request, HttpRequest])  -> redirect:
+        username = request.session.get("username")
+        serializer = ChangeSerializer(data=request.data, context={'user_id': username})
+        if serializer.is_valid():
+            return redirect("profile")     
+        messages.error(request, serializer.errors['non_field_errors'][0])
+        return redirect('change')
 
 
 class EditView(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "edit.html"
+    serializer_class = EditProfileSerializer
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" not in request.session:
             return redirect("login")
         username = request.session.get("username")
-        user=person.objects.filter(username=username)
-        return render(request, self.template_name,context={'user':user})    
+        person_details = Person.objects.filter(username=username)
+        return render(request, self.template_name,context={'person_details':person_details})    
 
-
-    def post(self, request):
+    def post(self, request:  Union[Request, HttpRequest])  ->  redirect:
         username = request.session.get("username")
-        fullname = request.POST.get("fullname")
-        phone = request.POST.get("phone")
-        country = request.POST.get("country")
+        serializer = EditProfileSerializer(data= request.data, context={'user_id':username})
+        if serializer.is_valid():
+            return redirect("profile")
+        messages.error(request, serializer.errors['non_field_errors'][0])
+        return redirect('edit')
 
-        print(fullname, phone, country, username)
-        user = person.objects.get(username=username)
-
-        if user:
-            user.fullname = fullname
-            user.phone = phone
-            user.country = country
-            user.save()
-        return redirect("profile")
-
-    def get(self, request):
-        if "username" not in request.session:
-            return redirect("login")
-        username = request.session.get("username")
-        user = person.objects.filter(username=username)
-        return render(request, self.template_name, context={"user": user})
 
 
 class AboutView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "about.html"
 
-    def get(self, request):
-        if "username" not in request.session:
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
+        if "username" not in request.session:   
             return redirect("login")
         return render(request, self.template_name)
 
@@ -287,7 +220,7 @@ class ContactView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "Contact.html"
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" not in request.session:
             return redirect("login")
         return render(request, self.template_name)
@@ -297,72 +230,76 @@ class ShopView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "shop.html"
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" not in request.session:
             return redirect("login")
-
-        data=product.objects.all()
-        maledata=maleproduct.objects.all()
-        femaledata=femaleproduct.objects.all()
-        return render(request, self.template_name,context={'datas':data,'maledata':maledata,'femaledata':femaledata})
-
-
-class AddressView(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = "address.html"
-
-    def get(self,request):
-        return render(request,self.template_name)
-
-
-        data = product.objects.all()
-        maledata = maleproduct.objects.all()
-        femaledata = femaleproduct.objects.all()
-        return render(
-            request,
-            self.template_name,
-            context={"datas": data, "maledata": maledata, "femaledata": femaledata},
-        )
-
+        product_details = Product.objects.all()
+        return render(request, self.template_name,context={"product_details": product_details})
 
 
 class GlassView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "glass.html"
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" not in request.session:
             return redirect("login")
         return render(request, self.template_name)
 
-    def post(self, request):
-        data = product.objects.all()
-        return render(request, self.template_name, context={"data": data})
+    def post(self, request:  Union[Request, HttpRequest])  -> render:
+        product_details = Product.objects.all()
+        return render(request, self.template_name, context={"product_details": product_details})
 
 
-class Addressdetails(generics.CreateAPIView):
+class AddressdetailsView(generics.CreateAPIView):
+    serializer_class = Addressserializer
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "address.html"
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> render:
         if "username" not in request.session:
             return redirect("login")
         return render(request, self.template_name)
     
-    def post(self, request):
-        locality = request.POST.get("locality")
-        address = request.Post.get("address")
-        pincode = request.POST.get("pincode")
-        city = request.POST.get("city")
-        state = request.POST.get("state")
+    def post(self, request:  Union[Request, HttpRequest]) -> Union[render, redirect]:
+        username  = request.session.get('username')
+        serializer = Addressserializer(data = request.data, context = {'username': username})
+        if serializer.is_valid():
+            pincode =serializer.data.get('pincode')
+            request.session['pincode'] = pincode
+            serializer.save()
+            return redirect('payment')
+        return redirect('Address')
 
-        
-class Payment(generics.CreateAPIView):
+
+class PaymentView(generics.CreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = "payment.html"
+    serializer_class = PaymentSerializer
 
-    def get(self, request):
+    def get(self, request:  Union[Request, HttpRequest])  -> Union[render, redirect]:
         if "username" not in request.session:
             return redirect("login")
         return render(request, self.template_name)
+    
+    def post(self,request:  Union[Request, HttpRequest])  ->  redirect:
+        pincode = request.session.get('pincode')
+        serializer = PaymentSerializer(data = request.data, context = {'pincode': pincode})
+        print("serializer------->",serializer)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('thank')
+        messages.error(request, serializer.errors)
+        return redirect('payment')
+    
 
+class ThankView(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "thanks.html"
+
+    def get(self,request: Union[Request, HttpRequest]) -> render:
+        if "username" not in request.session:
+            return redirect("login")
+        return render(request, self.template_name)
+        
+        
