@@ -118,6 +118,10 @@ p {
 	align-items: center;
 }
 
+.group button{
+	size: 5px;
+}
+
 .card .details h2 {
 	color: #fff;
 	text-transform: uppercase;

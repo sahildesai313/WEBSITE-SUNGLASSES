@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="stylesheet" href="{% static 'style.css.map' %}" />
     <link rel="stylesheet" href="{% static 'responsive.css' %}" />
+    <link rel="stylesheet" href="{% static 'style.scss' %}" />
 
+    
     <!-- slider stylesheet -->
     <link
       rel="stylesheet"
@@ -87,18 +89,18 @@
               </div>
               <div class="quote_btn-container">
                 <a href="{% url 'profile' %}"> profile </a>
-                <a href="">
+                <a href="/payment/">
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/7344/7344327.png"
                     alt=""
                   />
                 </a>
-                <form class="form-inline">
+                {% comment %} <form class="form-inline">
                   <button
                     class="btn my-2 my-sm-0 nav_search-btn"
                     type="submit"
                   ></button>
-                </form>
+                </form> {% endcomment %}
               </div>
             </div>
           </nav>
@@ -145,10 +147,11 @@
           </div>
           <div class="col-md-6">
             <div class="img-box">
-              <img
+          <img
                 src="https://media.istockphoto.com/id/844821088/vector/social-business-endeavors.jpg?s=612x612&w=0&k=20&c=_gxkkdRm5IP6EJ2urXjQe-CMLZmg9dtvm1lbaUyVuIo="
                 alt=""
               />
+              {% comment %} <img src="{% static '/images/next.png' %}" alt="My image"> {% endcomment %}
             </div>
           </div>
         </div>
@@ -162,26 +165,17 @@
     <section class="info_section">
       <div class="container">
         <div class="row">
-          <div class="col-md-5">
-            <h6>Subscribe Now</h6>
-            <form action="">
-              <input type="text" placeholder="Enter your email" />
-              <div class="d-flex justify-content-end">
-                <button>submit</button>
-              </div>
-            </form>
-          </div>
           <div class="col-md-3 offset-md-1">
             <h6>Links</h6>
             <ul>
               <li>
-                <a href=""> Lorem ipsum dolor sit </a>
+                <a href=""> likereal.com </a>
               </li>
               <li>
-                <a href=""> amet, consectetur adipis </a>
+                <a href="">  instagram : @likereal</a>
               </li>
               <li>
-                <a href=""> cing elit, sed do </a>
+                <a href=""> twitter : @likereal </a>
               </li>
             </ul>
           </div>
@@ -216,8 +210,9 @@
     </section>
     <!-- footer section -->
 
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>
-  </body>
+    <script> src="{% static 'bootstrap.js'%}" </script>
+    <script> src="{% static 'custom.js'%}" </script>
+    <script> src="{% static 'jquery-3.4.1.min.js' %}" </script>
+
+</body>
 </html>

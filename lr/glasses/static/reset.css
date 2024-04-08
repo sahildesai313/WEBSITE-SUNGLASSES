@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(https://cdn.discordapp.com/attachments/1191264803688292422/1199675748131278859/handsome-tourist-sunglasses-straw-hat-looking-aside-smiling-pleased-exploring-sighsteeing.jpg?ex=65c3681b&is=65b0f31b&hm=7e77122729b170f1d8b07bbd64a3254dc136a264b692e3e993cb7d9f13511e86&);
+    background-image: url(https://rare-gallery.com/uploads/posts/1137899-face-illustration-minimalism-glasses-silhouette-blue-musician-Skrillex-head-hand-finger-Sense-human-body-organ.png);
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
@@ -14,12 +14,13 @@ body {
   }
   
   .container {
-    width: 90%;
+    width: 30%;
     max-width: 400px;
     background-color: #058ea329;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgb(0, 0, 0);
+    margin-right: 755px
   }
   
   h2 {

@@ -92,3 +92,12 @@ a{
 a:hover {
     color: #fcbf5c;
 }
+
+@media (withmax-width: 600px) {
+    .form-container .messages{
+        background-position: center;
+        
+    }
+
+    
+}

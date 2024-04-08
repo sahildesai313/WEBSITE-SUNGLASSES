@@ -8,6 +8,7 @@
     <title>Login Page</title>  
     <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
+
 <body>
   <div class="container">
       <h1>Login</h1>
@@ -20,8 +21,9 @@
       </div>
   
       <form  method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
           <p style="text-align: center;margin-top: 27px;color: rgb(5, 217, 83);">{{error}}</p>
-          {% csrf_token %}
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required>
 
@@ -35,7 +37,7 @@
           <div class="pass-link">
              Forget Your Password   <a href="forgot/">Forgot password</a>
           </div>
-      </form>
+        </form>
   </div>
 </body>
 </html>

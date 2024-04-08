@@ -157,6 +157,7 @@ body {
   color: #bcc4f2;
 }
 
+
 /*Profile end*/
 
 /*header section*/
@@ -448,8 +449,7 @@ a:focus {
 }
 
 .glass_section {
-  background-color: #7bc3d1;
-  background-color: #4ca1ac;
+  background-color: #5ab9c5;
 }
 
 .glass_section .heading_container h2 {
@@ -581,7 +581,7 @@ a:focus {
 }
 
 .offer_section {
-  background-color: #bcc4f2;
+  background-color: #5ab9c5;
 }
 
 .offer_section .row {
@@ -748,7 +748,7 @@ a:focus {
 
 /* contact section */
 .contact_section {
-  background-color: #518291;
+  background-color: #000000;
   color: #ffffff;
 }
 
@@ -821,7 +821,7 @@ a:focus {
 /* end contact section */
 /* info section */
 .info_section {
-  background-color: #141414;
+  background-color: #000000;
 }
 
 .info_section .container {
@@ -917,7 +917,7 @@ a:focus {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color:#5cc3d1;
+  background-color:#5ab9c5;
   padding: 10px;
 }
 

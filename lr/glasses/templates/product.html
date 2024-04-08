@@ -8,24 +8,33 @@
 	<title>Porduct</title>
 	<link rel="stylesheet" href="{% static 'product.css' %}" />
 
+
 </head>
 
 <body>
 	<div class="product">
-		{% for x in Product_details %}
+		{% for x in product_details %}
 		<div class="card">
 			<div class="imgBx">
 				<img src="{{x.image.url}}" alt="">
 			</div>
 			<div class="details">
-				<h3>{{x.name}}<br><span></span></h3>
+				<h3>{{x.name}}</h3>
 				<h4>Model NO : {{x.modelnumber}} <br>
 					Frame Size : {{x.framesize}} <br>
 					Frame width : {{x.framewidth}}<br>
 					Frame color : {{x.framecolour}}</h4>
+					
 				<div class="group">
 					<h2>${{x.price}}</h2>
-					<a href="/address/">Buy Now</a>
+					<sanp>
+						<button>
+							<a href="/address/">Buy</a>
+						</button>
+						<button>
+							<a href="/shop/">Back</a>
+						</button>
+						</snap>
 				</div>
 			</div>
 		</div>

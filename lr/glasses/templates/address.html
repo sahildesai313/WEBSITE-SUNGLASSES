@@ -12,11 +12,8 @@
     <link rel="stylesheet" href="{% static 'style.css' %}" />
     <link rel="stylesheet" href="{% static 'style.css.map' %}" />
     <link rel="stylesheet" href="{% static 'responsive.css' %}" />
-
-    <script type="text/javascript" src="{% static 'static/bootstrap.js'%}"></script>
-    <script type="text/javascript" src="{% static 'static/custom.js'%}"></script>
-    <script type="text/javascript" src="{% static 'static/jquery-3.4.1.min.js' %}"></script>
-
+    <link rel="stylesheet" href="{% static 'address.css' %}" />
+    
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
 
@@ -24,133 +21,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
 
   </head>
-  <style>
-    @import url("https://rsms.me/inter/inter.css");
-
-    :root {
-      --color-gray: #737888;
-      --color-lighter-gray: #000000;
-      --color-light-gray: #000000;
-    }
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-
-    html {
-      font-family: "Inter", sans-serif;
-      font-size: 14px;
-      box-sizing: border-box;
-    }
-
-    @supports (font-variation-settings: normal) {
-      html {
-        font-family: "Inter var", sans-serif;
-      }
-    }
-
-
-    h1 {
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: var(--color-gray);
-    }
-
-    hr {
-      height: 1px;
-      width: 100%;
-      background-color: var(--color-light-gray);
-      border: 0;
-      margin: 2rem 0;
-    }
-
-    .container {
-      max-width: 75rem;
-      padding: 1vw 2rem 0;
-      margin: 1 auto;
-      height: 105vh; 
-    }
-
-    .for {
-      display: grid;
-      grid-gap: 2rem;
-    }
-
-    .field {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--color-lighter-gray);
-      padding: .5rem;
-      border-radius: .25rem;
-    }
-
-    .field__label {
-      color: var(--color-black);
-      font-size: 0.7rem;
-      font-weight: 250;
-      text-transform: uppercase;
-      margin-bottom: 0.25rem
-    }
-
-    .field__input {
-      padding: 0;
-      margin: 0;
-      border: 0;
-      outline: 0;
-      font-weight: bold;
-      font-size: 1rem;
-      width: 100%;
-      -webkit-appearance: none;
-      appearance: none;
-      background-color: transparent;
-    }
-
-    .field:focus-within {
-      border-color: #000;
-    }
-
-    .fields {
-      display: grid;
-      grid-gap: 1rem;
-    }
-
-    .fields--2 {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .fields-- {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .button {
-      background-color: #333333;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: block;
-      color: #fff;
-      width: 100%;
-      padding: 1rem;
-      border-radius: 0.25rem;
-      border: 0;
-      cursor: pointer;
-      outline: 0;
-    }
-
-    .button:focus-visible {
-      background-color: #333;
-    }
-    .button:hover{
-      background-color: rgb(0, 0, 0);
-    }
-  </style>
-
-  <body>
+  
+  <body>  
 <!-- header section strats -->
         <header class="header_section">
           <div class="container-fluid">
@@ -193,8 +65,8 @@
                           <a href="{% url 'profile' %}">
                               profile
                           </a>
-                          <a href="">
-                              <img src="https://cdn-icons-png.flaticon.com/512/7344/7344327.png" alt="">
+                          <a href="/payment/">
+                            <img src="https://cdn-icons-png.flaticon.com/512/7344/7344327.png" alt="">
                           </a>
                       </div>
                   </div>
@@ -266,6 +138,10 @@
     </section> 
 
   <!-- footer section -->
+  <script> src="{% static 'bootstrap.js'%}" </script>
+  <script> src="{% static 'custom.js'%}" </script>
+  <script> src="{% static 'jquery-3.4.1.min.js' %}" </script>
+
 
   </body>
   </html>

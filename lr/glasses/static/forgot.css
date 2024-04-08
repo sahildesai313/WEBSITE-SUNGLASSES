@@ -6,7 +6,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(https://img.freepik.com/free-photo/closeup-thoughtful-young-smart-girl-glasses-smiling-looking-intrigued-choosing-product-thi_1258-120438.jpg?w=1380&t=st=1706506712~exp=1706507312~hmac=dd5d8c110739c0aa920e0869debd953a34dfd562605290c1555aa690013c106f);
+    background-image: url(images/handsome-tourist-straw-hat-put-sunglasses-summer-vacation-standing-blue-background.jpg);
     background-size: cover; 
     background-position: center;
     background-repeat: no-repeat;
@@ -47,18 +47,17 @@ input[type="email"] {
     outline: none;
 }
 
-button {
+.forgot-button {
     padding: 10px 20px;
-    background: #706c6c;
-    color: white;
+    color: rgb(39, 83, 145);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background: #504643;
+.forgot-button:hover  {
+    background: #354a76;
 }
 
 h3 {
