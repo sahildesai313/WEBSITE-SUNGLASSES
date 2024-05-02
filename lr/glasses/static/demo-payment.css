@@ -1,0 +1,531 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.main-div {
+    background-color: white;
+    width: 1133px;
+    height: 700px;
+    margin-left: auto;
+    margin-top: -10px;
+    margin-right: auto;
+}
+
+.payment-data {
+    background-color: #5cc3d1;
+    border-radius: 20px;
+    width: 388px;
+    height: 640px;
+    margin-top: -90px;
+    margin-left: 708px;
+}
+
+.header {
+    display: flex;
+}
+
+.card-detalis {
+    padding-top: 27px;
+    margin-left: 19px;
+    color: #000000;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    font-family: poppins;
+}
+
+.card-owner {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-left: 185px;
+    margin-top: 19px;
+
+}
+
+.card-type {
+    color: #000000;
+    font-family: 'Nunito';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.82px;
+    width: 94px;
+    height: 22px;
+    position: relative;
+    top: 24px;
+    left: 20px;
+}
+
+.img-payment-1 {
+    width: 75px;
+    height: 55px;
+    position: relative;
+    top: 40px;
+    left: 20px;
+    border-radius: 5px;
+    margin-right: 18px;
+
+}
+
+.img-payment-2 {
+    width: 75px;
+    height: 55px;
+    position: relative;
+    top: 40px;
+    left: 13px;
+    border-radius: 5px;
+    margin-right: 18px;
+
+
+}
+
+.img-payment-3 {
+    width: 75px;
+    height: 55px;
+    position: relative;
+    top: 40px;
+    left: 5px;
+    border-radius: 5px;
+}
+
+.img-payment-4 {
+    width: 75px;
+    height: 55px;
+    position: relative;
+    top: 18px;
+    border: 1px solid black;
+    padding: 18px;
+    left: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    background-color: #D9D9D9 20%;
+    color: #000;
+}
+
+.name-label {
+    position: relative;
+    top: 57px;
+    left: 19px;
+    color: #000000;
+    font-family: 'Nunito';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.82px;
+    width: 94px;
+    height: 22px;
+    text-align: center;
+
+}
+
+.name-input {
+    width: 350px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    display: block;
+    position: relative;
+    top: 57px;
+    left: 19px;
+    padding-left: 19px;
+    color: #000000;
+    border: none;
+}
+
+.card-number-label {
+    position: relative;
+    top: 70px;
+    left: 19px;
+    color: #000000;
+    font-family: 'Nunito';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.82px;
+    width: 94px;
+    height: 22px;
+}
+
+.card-number-input {
+    width: 350px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    display: block;
+    position: relative;
+    top: 70px;
+    left: 19px;
+    padding-left: 19px;
+    color: #000000;
+    border: none;
+}
+
+.div {
+
+    margin-top: 100px;
+}
+
+.div1 {
+    display: grid;
+    width: 100%;
+    height: 40px;
+}
+
+.div2 {
+    display: grid;
+    width: 100%;
+    height: 40px;
+}
+
+.CVV {
+    width: 40%;
+    height: 40px;
+    background-color: #ffffff;
+    border: none;
+    margin-top: 20px;
+    color: #000000;
+    position: relative;
+    top: -60px;
+    left: 200px;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+
+.Expiration-date {
+    width: 40%;
+    background-color: #ffffff;
+    border: none;
+    height: 40px;
+    ;
+    color: #000000;
+    position: relative;
+    top: 0;
+    left: 20px;
+    border-radius: 5px;
+    padding-left: 20px;
+
+
+}
+
+.CVV-label {
+    position: relative;
+    bottom: 37px;
+    left: 200px;
+    color: #000000;
+    font-family: 'Nunito';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.82px;
+    width: 94px;
+    height: 22px;
+
+}
+
+
+
+.Expiration-label {
+    position: relative;
+    top: 0;
+    left: 19px;
+    color: #000000;
+    font-family: 'Nunito';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21.82px;
+    width: 40%;
+    height: 22px;
+}
+
+.hr {
+    border-color: #5F65C3;
+    width: 350px;
+    position: relative;
+    left: 19px;
+
+}
+
+.button {
+    width: 190px;
+    height: 50px;
+    border-radius: 12px;
+    position: relative;
+    top: 2%;
+    left: 22px;
+    font: 400px;
+}
+
+.button input {
+    color: #000000;
+    letter-spacing: 1px;
+    height: 50px;
+    width: 150px;
+    border: none;
+    background: #ffffff;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    margin-left: -40px;
+    text-transform: uppercase;
+    margin-top: 15px;
+}
+
+.button input:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.checkout-image-1 {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 50px;
+
+
+}
+
+.checkout-image-2 {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: -7px;
+    left: 250px;
+    background-color: white;
+
+}
+
+.hover-2 {
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    left: 240px;
+    top: -15px;
+
+}
+
+.total {
+    width: 138px;
+    height: 24px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "poppins";
+    position: relative;
+    top: 20px;
+    left: 20px;
+    color: white;
+}
+
+.one {
+    display: flex;
+    margin-top: 10px;
+}
+
+.a {
+    width: 50%;
+
+    height: 100px;
+}
+
+.b {
+    width: 50%;
+
+    height: 100px;
+}
+
+.inc1 {
+    margin-top: 10px;
+    margin-left: 19px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    font-family: poppins;
+}
+
+.inc2 {
+    margin-top: 10px;
+    margin-right: 19px;
+    color: #000;
+    text-align: right;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    font-family: poppins;
+}
+
+.hover-1 {
+    text-decoration: none;
+    font-family: poppins;
+    width: 190px;
+    height: 27px;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 600;
+    color: #1E1E1E;
+    position: relative;
+    top: 43px;
+
+}
+
+.hr-1 {
+    width: 608px;
+    position: relative;
+    top: 60px;
+}
+
+.cart-1 {
+    width: 215px;
+    height: 19px;
+    position: relative;
+    top: 100px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19.1px;
+}
+
+.cart {
+    width: 190px;
+    height: 27px;
+    position: relative;
+    top: 100px;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.product-1 {
+    width: 608px;
+    height: 100px;
+    background-color: rgb(64, 137, 211);
+    border-radius: 10px;
+    position: relative;
+    top: 130px;
+
+}
+
+.product-2 {
+    width: 608px;
+    height: 100px;
+    background-color: yellow;
+    border-radius: 15px;
+    position: relative;
+    top: 160px;
+}
+
+.product-3 {
+    width: 608px;
+    height: 100px;
+    background-color: yellowgreen;
+    border-radius: 15px;
+    position: relative;
+    top: 190px;
+}
+
+.img1 {
+    width: 80px;
+    height: 82.29px;
+    position: relative;
+    left: 10px;
+    top: 8px;
+    border-radius: 8%;
+}
+
+
+.img2 {
+    width: 80px;
+    height: 82.29px;
+    position: relative;
+    left: 10px;
+    top: 8px;
+}
+
+
+.img3 {
+    width: 80px;
+    height: 82.29px;
+    position: relative;
+    left: 10px;
+    top: 8px;
+}
+
+.product-name-1 {
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    width: 190px;
+    height: 27px;
+    position: relative;
+    bottom: 65px;
+    left: 110px;
+    color: #1E1E1E;
+}
+
+.product-name-extra-1 {
+    font-family: Nunito;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19.1px;
+    color: #1E1E1E;
+    width: 164px;
+    height: 19px;
+    position: relative;
+    bottom: 65px;
+    left: 110px;
+
+}
+
+.product-name-2 {
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    width: 190px;
+    height: 27px;
+    position: relative;
+    bottom: 65px;
+    left: 110px;
+    color: #1E1E1E;
+
+}
+
+.product-name-extra-2 {
+    font-family: Nunito;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19.1px;
+    color: #1E1E1E;
+    width: 164px;
+    height: 19px;
+    position: relative;
+    bottom: 65px;
+    left: 110px;
+}
+
+.product-name-3 {
+    font-family: poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    width: 190px;
+    height: 27px;
+    position: relative;
+    bottom: 65px;
+    left: 110px;
+    color: #1E1E1E;
+}
+
+.product-name-extra-3 {
+    font-family: Nunito;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19.1px;
+    color: #1E1E1E;
+    width: 164px;
+    height: 19px;
+    position: relative;
+    bottom: 65px;
+    left: 110px;
+}
