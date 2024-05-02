@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, Product, Address, Card, Contact
+from .models import Person, Product, Address, Card, Contact,Cart
 
 
 class PersonAdmin(admin.ModelAdmin):
@@ -10,7 +10,7 @@ admin.site.register(Person, PersonAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name", "image", "price", "framecolour", "id", "gender")
+    list_display = ("name", "image", "price", "framecolour", "id", "gender","image")
 
 
 admin.site.register(Product, ProductAdmin)
@@ -24,14 +24,20 @@ admin.site.register(Address, addressdetilsAdmin)
 
 
 class cardAdmin(admin.ModelAdmin):
-    list_display = ("nameoncard", "cardno", "date", "cvv")
+    list_display = ("cardname", "cardnumber", "cvv","MM", "YYYY")
 
 
 admin.site.register(Card, cardAdmin)
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "phone", "email", "massage")
+    list_display = ("name", "phone", "email", "massage")
 
 
 admin.site.register(Contact, ContactAdmin)
+
+
+class CartAdmin(admin.ModelAdmin):
+    list_display = ("person","product","quantity")
+
+admin.site.register(Cart,CartAdmin)

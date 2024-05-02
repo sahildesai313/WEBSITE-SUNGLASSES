@@ -7,6 +7,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>OTP Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'otp.css' %}" />
 </head>
 
@@ -28,7 +29,7 @@
       <input type="hidden" name="email" value="{{ email }}" />
       <input type="hidden" name="fake_otp" value="{{ fake_otp }}" />
       <label for="entered_otp">Enter OTP</label>
-      <input type="text" id="entered_otp" name="enter_otp" />
+      <input type="text" id="entered_otp" name="enter_otp" required>
       <button type="submit">Submit</button>
     </form>
   </div>

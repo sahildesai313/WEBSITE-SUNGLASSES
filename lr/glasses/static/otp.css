@@ -1,10 +1,12 @@
+/* Existing CSS */
+
 body {
     font-family: Arial, sans-serif;
     background-image: url(images/portrait-stylish-happy-woman-dancing-trendy-sunglasses-standing-beige-studio-background.jpg);
     margin: 0;
     padding: 135.5px;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
     margin-left: -650px;
 }
 
@@ -21,7 +23,7 @@ body {
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color:#000;
+    color: #000;
 }
 
 strong {
@@ -32,7 +34,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    }
+}
 
 label {
     margin-bottom: 10px;
@@ -59,11 +61,23 @@ button {
 }
 
 button:hover {
-    background:  #005766;
+    background: #05a5c2;
 }
 
 p.error {
     color: red;
     margin-top: 10px;
     font-style: italic;
+}
+
+/* Responsive CSS */
+
+@media only screen and (max-width: 768px) {
+    .otp-container {
+        width: 80%;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
 }

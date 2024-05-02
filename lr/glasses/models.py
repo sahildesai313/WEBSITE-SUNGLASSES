@@ -26,23 +26,6 @@ class GenderChoices(models.IntegerChoices):
     FEMALE = 2, "FEMALE"
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=250)
-    price = models.IntegerField()
-    modelnumber = models.CharField(max_length=10, default="")
-    framesize = models.CharField(max_length=10, default="")
-    framecolour = models.CharField(max_length=50, default="")
-    framewidth = models.CharField(max_length=10, default="")
-    image = models.ImageField(upload_to="image", default=None)
-    id = models.AutoField(primary_key=True)
-    gender = models.IntegerField(
-        choices=GenderChoices.choices, default=GenderChoices.MALE
-    )
-
-    def __str__(self):
-        return f"{self.id} - {self.name}"
-
-
 class Address(models.Model):
     person = models.ForeignKey(
         Person,
@@ -60,13 +43,14 @@ class Address(models.Model):
 
 class Card(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
-    nameoncard = models.CharField(max_length=250)
-    cardno = models.CharField(max_length=100)
-    date = models.CharField(max_length=10)
+    cardname = models.CharField(max_length=250)
+    cardnumber = models.CharField(max_length=100)
+    MM = models.CharField(max_length=10)
+    YYYY = models.CharField(max_length=10)
     cvv = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"{self.nameoncard}"
+        return f"{self.cardname}"
 
 
 class Contact(models.Model):
@@ -77,3 +61,26 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=250)
+    price = models.IntegerField()
+    modelnumber = models.CharField(max_length=10, default="")
+    framesize = models.CharField(max_length=10, default="")
+    framecolour = models.CharField(max_length=50, default="")
+    framewidth = models.CharField(max_length=10, default="")
+    image = models.ImageField(upload_to="image", default=None)
+    id = models.AutoField(primary_key=True)
+    gender = models.IntegerField(
+        choices=GenderChoices.choices, default=GenderChoices.MALE
+    )
+
+    def __str__(self):
+        return f"{self.id} - {self.name}"
+
+
+class Cart(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=0)

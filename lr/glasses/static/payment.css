@@ -1,531 +1,150 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.payment-form {
+	padding-bottom: 50px;
+	font-family: 'Montserrat', sans-serif;
 }
 
-.main-div {
-    background-color: white;
-    width: 1133px;
-    height: 700px;
-    margin-left: auto;
-    margin-top: -10px;
-    margin-right: auto;
+.payment-form.dark {
+	background-color: #f6f6f6;
 }
 
-.payment-data {
-    background-color: #5cc3d1;
-    border-radius: 20px;
-    width: 388px;
-    height: 640px;
-    margin-top: -90px;
-    margin-left: 708px;
+.payment-form .content {
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+	background-color: white;
 }
 
-.header {
-    display: flex;
+.payment-form .block-heading {
+	padding-top: 50px;
+	margin-bottom: 40px;
+	text-align: center;
 }
 
-.card-detalis {
-    padding-top: 27px;
-    margin-left: 19px;
-    color: #000000;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 33px;
-    font-family: poppins;
+.payment-form .block-heading p {
+	text-align: center;
+	max-width: 420px;
+	margin: auto;
+	opacity: 0.7;
 }
 
-.card-owner {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    margin-left: 185px;
-    margin-top: 19px;
-
+.payment-form.dark .block-heading p {
+	opacity: 0.8;
 }
 
-.card-type {
-    color: #000000;
-    font-family: 'Nunito';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21.82px;
-    width: 94px;
-    height: 22px;
-    position: relative;
-    top: 24px;
-    left: 20px;
+.payment-form .block-heading h1,
+.payment-form .block-heading h2,
+.payment-form .block-heading h3 {
+	margin-bottom: 1.2rem;
+	color: #5ab9c5;
 }
 
-.img-payment-1 {
-    width: 75px;
-    height: 55px;
-    position: relative;
-    top: 40px;
-    left: 20px;
-    border-radius: 5px;
-    margin-right: 18px;
-
+.payment-form form {
+	border-top: 2px solid #5ab9c5;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+	background-color: #ffffff;
+	padding: 0;
+	max-width: 600px;
+	margin: auto;
 }
 
-.img-payment-2 {
-    width: 75px;
-    height: 55px;
-    position: relative;
-    top: 40px;
-    left: 13px;
-    border-radius: 5px;
-    margin-right: 18px;
-
-
+.payment-form .title {
+	font-size: 1em;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	margin-bottom: 0.8em;
+	font-weight: 600;
+	padding-bottom: 8px;
 }
 
-.img-payment-3 {
-    width: 75px;
-    height: 55px;
-    position: relative;
-    top: 40px;
-    left: 5px;
-    border-radius: 5px;
+.payment-form .products {
+	background-color: #f7fbff;
+	padding: 25px;
 }
 
-.img-payment-4 {
-    width: 75px;
-    height: 55px;
-    position: relative;
-    top: 18px;
-    border: 1px solid black;
-    padding: 18px;
-    left: 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    background-color: #D9D9D9 20%;
-    color: #000;
+.payment-form .products .item {
+	margin-bottom: 1em;
 }
 
-.name-label {
-    position: relative;
-    top: 57px;
-    left: 19px;
-    color: #000000;
-    font-family: 'Nunito';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21.82px;
-    width: 94px;
-    height: 22px;
-    text-align: center;
-
+.payment-form .products .item-name {
+	font-weight: 600;
+	font-size: 0.9em;
 }
 
-.name-input {
-    width: 350px;
-    height: 40px;
-    border-radius: 6px;
-    background-color: #ffffff;
-    display: block;
-    position: relative;
-    top: 57px;
-    left: 19px;
-    padding-left: 19px;
-    color: #000000;
-    border: none;
+.payment-form .products .item-description {
+	font-size: 0.8em;
+	opacity: 0.6;
 }
 
-.card-number-label {
-    position: relative;
-    top: 70px;
-    left: 19px;
-    color: #000000;
-    font-family: 'Nunito';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21.82px;
-    width: 94px;
-    height: 22px;
+.payment-form .products .item p {
+	margin-bottom: 0.2em;
 }
 
-.card-number-input {
-    width: 350px;
-    height: 40px;
-    border-radius: 6px;
-    background-color: #ffffff;
-    display: block;
-    position: relative;
-    top: 70px;
-    left: 19px;
-    padding-left: 19px;
-    color: #000000;
-    border: none;
+.payment-form .products .price {
+	float: right;
+	font-weight: 600;
+	font-size: 0.9em;
 }
 
-.div {
-
-    margin-top: 100px;
+.payment-form .products .total {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	padding-top: 19px;
+	font-weight: 600;
+	line-height: 1;
 }
 
-.div1 {
-    display: grid;
-    width: 100%;
-    height: 40px;
+.payment-form .payment-method {
+	margin-bottom: 20px;
 }
 
-.div2 {
-    display: grid;
-    width: 100%;
-    height: 40px;
+.payment-form .payment-method label {
+	margin-left: 10px;
 }
 
-.CVV {
-    width: 40%;
-    height: 40px;
-    background-color: #ffffff;
-    border: none;
-    margin-top: 20px;
-    color: #000000;
-    position: relative;
-    top: -60px;
-    left: 200px;
-    border-radius: 5px;
-    padding-left: 20px;
+.payment-form .card-details {
+	padding: 25px 25px 15px;
 }
 
-.Expiration-date {
-    width: 40%;
-    background-color: #ffffff;
-    border: none;
-    height: 40px;
-    ;
-    color: #000000;
-    position: relative;
-    top: 0;
-    left: 20px;
-    border-radius: 5px;
-    padding-left: 20px;
-
-
+.payment-form .card-details label {
+	font-size: 12px;
+	font-weight: 600;
+	margin-bottom: 15px;
+	color: #79818a;
+	text-transform: uppercase;
 }
 
-.CVV-label {
-    position: relative;
-    bottom: 37px;
-    left: 200px;
-    color: #000000;
-    font-family: 'Nunito';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21.82px;
-    width: 94px;
-    height: 22px;
-
+.payment-form .card-details button {
+	margin-top: 2em;
+	padding: 12px 0;
+	font-weight: 600;
+	color: black;
 }
 
-
-
-.Expiration-label {
-    position: relative;
-    top: 0;
-    left: 19px;
-    color: #000000;
-    font-family: 'Nunito';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 21.82px;
-    width: 40%;
-    height: 22px;
+.payment-form .date-separator {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
 }
 
-.hr {
-    border-color: #5F65C3;
-    width: 350px;
-    position: relative;
-    left: 19px;
+@media (min-width: 576px) {
+	.payment-form .title {
+		font-size: 1.2em;
+	}
 
-}
+	.payment-form .products {
+		padding: 40px;
+	}
 
-.button {
-    width: 190px;
-    height: 50px;
-    border-radius: 12px;
-    position: relative;
-    top: 2%;
-    left: 22px;
-    font: 400px;
-}
+	.payment-form .products .item-name {
+		font-size: 1em;
+	}
 
-.button input {
-    color: #000000;
-    letter-spacing: 1px;
-    height: 50px;
-    width: 150px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 10px;
-    margin-left: -40px;
-    text-transform: uppercase;
-    margin-top: 15px;
-}
+	.payment-form .products .price {
+		font-size: 1em;
+	}
 
-.button input:hover {
-    background-color: #000000;
-    color: white;
-}
+	.payment-form .card-details {
+		padding: 40px 40px 30px;
+	}
 
-.checkout-image-1 {
-    width: 25px;
-    height: 25px;
-    position: relative;
-    top: 50px;
-
-
-}
-
-.checkout-image-2 {
-    width: 25px;
-    height: 25px;
-    position: relative;
-    top: -7px;
-    left: 250px;
-    background-color: white;
-
-}
-
-.hover-2 {
-    text-decoration: none;
-    color: #ffffff;
-    position: relative;
-    left: 240px;
-    top: -15px;
-
-}
-
-.total {
-    width: 138px;
-    height: 24px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    font-family: "poppins";
-    position: relative;
-    top: 20px;
-    left: 20px;
-    color: white;
-}
-
-.one {
-    display: flex;
-    margin-top: 10px;
-}
-
-.a {
-    width: 50%;
-
-    height: 100px;
-}
-
-.b {
-    width: 50%;
-
-    height: 100px;
-}
-
-.inc1 {
-    margin-top: 10px;
-    margin-left: 19px;
-    color: #000000;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 500;
-    font-family: poppins;
-}
-
-.inc2 {
-    margin-top: 10px;
-    margin-right: 19px;
-    color: #000;
-    text-align: right;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 500;
-    font-family: poppins;
-}
-
-.hover-1 {
-    text-decoration: none;
-    font-family: poppins;
-    width: 190px;
-    height: 27px;
-    font-size: 18px;
-    line-height: 27px;
-    font-weight: 600;
-    color: #1E1E1E;
-    position: relative;
-    top: 43px;
-
-}
-
-.hr-1 {
-    width: 608px;
-    position: relative;
-    top: 60px;
-}
-
-.cart-1 {
-    width: 215px;
-    height: 19px;
-    position: relative;
-    top: 100px;
-
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 19.1px;
-}
-
-.cart {
-    width: 190px;
-    height: 27px;
-    position: relative;
-    top: 100px;
-
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-}
-
-.product-1 {
-    width: 608px;
-    height: 100px;
-    background-color: rgb(64, 137, 211);
-    border-radius: 10px;
-    position: relative;
-    top: 130px;
-
-}
-
-.product-2 {
-    width: 608px;
-    height: 100px;
-    background-color: yellow;
-    border-radius: 15px;
-    position: relative;
-    top: 160px;
-}
-
-.product-3 {
-    width: 608px;
-    height: 100px;
-    background-color: yellowgreen;
-    border-radius: 15px;
-    position: relative;
-    top: 190px;
-}
-
-.img1 {
-    width: 80px;
-    height: 82.29px;
-    position: relative;
-    left: 10px;
-    top: 8px;
-    border-radius: 8%;
-}
-
-
-.img2 {
-    width: 80px;
-    height: 82.29px;
-    position: relative;
-    left: 10px;
-    top: 8px;
-}
-
-
-.img3 {
-    width: 80px;
-    height: 82.29px;
-    position: relative;
-    left: 10px;
-    top: 8px;
-}
-
-.product-name-1 {
-    font-family: poppins;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 18px;
-    width: 190px;
-    height: 27px;
-    position: relative;
-    bottom: 65px;
-    left: 110px;
-    color: #1E1E1E;
-}
-
-.product-name-extra-1 {
-    font-family: Nunito;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 19.1px;
-    color: #1E1E1E;
-    width: 164px;
-    height: 19px;
-    position: relative;
-    bottom: 65px;
-    left: 110px;
-
-}
-
-.product-name-2 {
-    font-family: poppins;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    width: 190px;
-    height: 27px;
-    position: relative;
-    bottom: 65px;
-    left: 110px;
-    color: #1E1E1E;
-
-}
-
-.product-name-extra-2 {
-    font-family: Nunito;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 19.1px;
-    color: #1E1E1E;
-    width: 164px;
-    height: 19px;
-    position: relative;
-    bottom: 65px;
-    left: 110px;
-}
-
-.product-name-3 {
-    font-family: poppins;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    width: 190px;
-    height: 27px;
-    position: relative;
-    bottom: 65px;
-    left: 110px;
-    color: #1E1E1E;
-}
-
-.product-name-extra-3 {
-    font-family: Nunito;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 19.1px;
-    color: #1E1E1E;
-    width: 164px;
-    height: 19px;
-    position: relative;
-    bottom: 65px;
-    left: 110px;
+	.payment-form .card-details button {
+		margin-top: 2em;
+	}
 }

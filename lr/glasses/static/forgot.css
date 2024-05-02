@@ -7,19 +7,21 @@ body {
     align-items: center;
     height: 100vh;
     background-image: url(images/handsome-tourist-straw-hat-put-sunglasses-summer-vacation-standing-blue-background.jpg);
-    background-size: cover; 
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-right:800px;
-
 }
 
 .forgot-container {
     background-color: #ffffff00;
-    padding: 19 px;
+    padding: 19px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.997);
     text-align: center;
+    max-width: 600px;
+    width: 24%;
+    margin-right: 500px;
+
 }
 
 h1 {
@@ -36,10 +38,13 @@ form {
 
 label {
     font-weight: bold;
+    margin-top: -15%;
+    padding: 12px;
 }
 
 input[type="email"] {
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     padding: 8px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -49,17 +54,24 @@ input[type="email"] {
 
 .forgot-button {
     padding: 10px 20px;
-    color: rgb(39, 83, 145);
+    background-color: rgb(69, 180, 208);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.forgot-button:hover  {
-    background: #354a76;
+.forgot-button:hover {
+    background: rgb(129, 191, 214);
 }
 
 h3 {
     font-size: 24px;
+}
+
+@media (max-width: 768px) {
+    .forgot-container {
+        width: 90%;
+        margin-right: 0;
+    }
 }

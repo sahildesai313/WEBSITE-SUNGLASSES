@@ -1,5 +1,4 @@
 body {
-
   font-family: Arial, sans-serif;
   background-image: url('https://static.vecteezy.com/system/resources/previews/022/426/801/non_2x/pineapple-with-sunglasses-on-blue-background-summer-vacation-concept-generative-ai-free-photo.jpeg');
   margin: 0;
@@ -11,30 +10,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  justify-content: left;
-
-  font-family: Arial, sans-serif;
-  background-image: url("https://static.vecteezy.com/system/resources/previews/022/426/801/non_2x/pineapple-with-sunglasses-on-blue-background-summer-vacation-concept-generative-ai-free-photo.jpeg");
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  justify-content: left;
-
 }
 
 .container {
-  background-color: #00000000;
+  background-color: #ffffff18;
   box-shadow: 0 0 10px rgb(0, 0, 0);
   border-radius: 5px;
   padding: 20px;
-  width: 300px;
-  margin-left: 280px;
+  max-width: 400px;
+  width: 90%;
+  margin-right: 500px;
+  margin-left: 0;
 }
 
 h1 {
@@ -44,7 +30,6 @@ h1 {
 
 form {
   display: flex;
-  align-items: left;
   flex-direction: column;
 }
 
@@ -58,7 +43,6 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-  border-color: #000000;
 }
 
 button {
@@ -75,12 +59,10 @@ button:hover {
   background-color: #15363cb0;
 }
 
-.signup-link {
-  padding-top: 10px;
-}
-
+.signup-link,
 .pass-link {
-  padding-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 a {
@@ -89,4 +71,30 @@ a {
 
 a:hover {
   color: #fcbf5c;
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 400px;
+  }
 }

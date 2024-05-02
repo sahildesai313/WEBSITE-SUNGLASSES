@@ -4,7 +4,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 400px;
   margin-left: 37%;
-  bottom: -90px ;
+  bottom: -90px;
   text-align: center;
   font-family: arial;
   height: auto;
@@ -33,7 +33,7 @@
 }
 
 img {
-  width: 60%;
+  width: 90%;
 }
 
 /* product end */
@@ -44,7 +44,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 110vh;
   background-color: #f2f2f2;
 }
 
@@ -95,7 +95,7 @@ img {
 .button input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #2ea9b6;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -104,17 +104,18 @@ img {
 
 .button1 input[type="submit"]:hover,
 .button input[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #3eccdc;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   color: #0c0c0c;
-  background-color: #ffffff;
+  background-color: #fff;
+
 }
 
 .layout_padding {
-  padding: 75px 0;
+  padding: 120px 0;
 }
 
 .layout_padding2 {
@@ -154,7 +155,8 @@ body {
 }
 
 .heading_container h2 span {
-  color: #bcc4f2;
+  color: rgb(90, 185, 197);
+  ;
 }
 
 
@@ -171,6 +173,9 @@ body {
 
 .header_section {
   background-color: #1d1d1d;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
 }
 
 .header_section .container-fluid {
@@ -238,7 +243,7 @@ a:focus {
 .navbar-brand span {
   font-size: 24px;
   font-weight: 700;
-  color: #d7cff4;
+  color: rgb(255 255 255);
   text-transform: uppercase;
 }
 
@@ -271,8 +276,8 @@ a:focus {
 }
 
 .quote_btn-container a img {
-  width: 25px;
-  margin: 0 35px;
+  width: 28px;
+  margin: 0 15px;
 }
 
 .quote_btn-container a:hover {
@@ -282,7 +287,7 @@ a:focus {
 /*end header section*/
 /* slider section */
 .slider_section {
-  height: calc(100% - 75px);
+  height: calc(100%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -559,7 +564,8 @@ a:focus {
 }
 
 .quality_section .detail-box a.active h6 span {
-  color: #42b8e4;
+  color: rgb(90, 185, 197);
+  ;
 }
 
 .quality_section .img-container {
@@ -889,6 +895,10 @@ a:focus {
   margin-left: -120px;
 }
 
+.info_section form button:hover {
+  color: white;
+}
+
 .info_section ul {
   padding: 0;
 }
@@ -917,7 +927,7 @@ a:focus {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color:#5ab9c5;
+  background-color: #5ab9c5;
   padding: 10px;
 }
 

@@ -12,34 +12,37 @@
 </head>
 
 <body>
-	<div class="product">
-		{% for x in product_details %}
-		<div class="card">
-			<div class="imgBx">
-				<img src="{{x.image.url}}" alt="">
-			</div>
-			<div class="details">
-				<h3>{{x.name}}</h3>
-				<h4>Model NO : {{x.modelnumber}} <br>
-					Frame Size : {{x.framesize}} <br>
-					Frame width : {{x.framewidth}}<br>
-					Frame color : {{x.framecolour}}</h4>
-					
-				<div class="group">
-					<h2>${{x.price}}</h2>
-					<sanp>
-						<button>
-							<a href="/address/">Buy</a>
-						</button>
-						<button>
-							<a href="/shop/">Back</a>
-						</button>
-						</snap>
+
+	<form action="{% url 'add' image_id=product_details.id %}" method="post">
+		{% csrf_token %}
+
+		<!-- Product details -->
+		<div class="product">
+			<div class="card">
+				<div class="imgBx">
+					<img src="{{ product_details.image.url }}" alt="">
+				</div>
+				<div class="details">
+					<h3>{{ product_details.name }}</h3>
+					<h4>Model NO : {{ product_details.modelnumber }} <br>
+						Frame Size : {{ product_details.framesize }} <br>
+						Frame width : {{ product_details.framewidth }}<br>
+						Frame color : {{ product_details.framecolour }}</h4>
+
+					<div class="group">
+						<h2>${{ product_details.price }}</h2>
+						<span>
+							<button><a href="/cart/<product_id>/">Buy</a></button>
+							<button><a href="/shop/">Back</a></button>
+						</span>
+						<label for="quantity">Quantity:</label>
+						<input type="number" id="quantity" name="quantity" value="1">
+						<button type="submit">Add to Cart</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		{% endfor %}
-	</div>
+	</form>
 </body>
 
 </html>

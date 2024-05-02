@@ -70,7 +70,7 @@ class Forgetserializer(serializers.ModelSerializer):
         return data
 
 
-class ResetSerializer(serializers.ModelSerializer):
+class ResetpasswordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Person
@@ -171,19 +171,17 @@ class PaymentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def validate(self, data):
-        cardno = data.get("cardno")
+        cardnumber = data.get("cardnumber")
         cvv = data.get("cvv")
-        card_no = re.findall("[a-z]", cardno)
-        cvv_no = re.findall("[a-z]", cvv)
+        MM= data.get("MM")
+        YYYY = data.get("YYYY") 
 
-        if len(cardno) != 16:
-            raise ValidationError("Enter Valid Carddeatils ")
+        if len(cardnumber) != 19:
+            raise ValidationError("Enter Valid Carddeatils")
+        if len(MM)!= 2 or len(YYYY)!= 4:
+            raise ValidationError("Enter valid Carddeatils")
         if len(cvv) != 3:
             raise ValidationError("Enter Valid Carddeatils")
-        # if card_no:
-        #     raise ValidationError("Card No. not valid")
-        # if cvv_no:
-        #     raise ValidationError("Cvv No. not valid")
         return data
 
     def create(self, validated_data):
@@ -193,7 +191,7 @@ class PaymentSerializer(serializers.ModelSerializer):
         return card
 
 
-class ConfirmSerializer(serializers.Serializer):
+class ConfirmSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = "__all__"
@@ -204,6 +202,16 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = "__all__"
+  
+    def validate(self, data):
+        username = data.get("username")
+        phone = data.get("phone")
+
+        if Person.objects.filter(username=username).exists():
+            raise ValidationError("Username already exists")
+        if len(str(phone)) != 10:
+            raise ValidationError("Phone number is not valid")
+        return data
 
     def create(self, validated_data):
         contact = Contact.objects.create(**validated_data)
@@ -215,3 +223,4 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = "__all__"
+
