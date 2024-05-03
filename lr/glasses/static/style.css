@@ -243,7 +243,7 @@ a:focus {
 .navbar-brand span {
   font-size: 24px;
   font-weight: 700;
-  color: rgb(255 255 255);
+  background: linear-gradient(155deg, #ff7a91, #1d1d1d 60%);
   text-transform: uppercase;
 }
 
@@ -285,6 +285,7 @@ a:focus {
 }
 
 /*end header section*/
+
 /* slider section */
 .slider_section {
   height: calc(100%);
@@ -399,6 +400,9 @@ a:focus {
   transform: translateY(-50%);
 }
 
+.slider_section .carousel-indicators li:hover {
+  color: black;
+}
 
 .slider_section .custom_carousel-control .carousel-control-prev:hover,
 .slider_section .custom_carousel-control .carousel-control-next:hover {
@@ -422,6 +426,7 @@ a:focus {
 }
 
 /* end slider section */
+
 .about_section .row {
   -webkit-box-align: center;
   -ms-flex-align: center;

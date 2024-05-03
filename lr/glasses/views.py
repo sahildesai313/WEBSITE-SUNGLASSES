@@ -319,21 +319,38 @@ class ShopView(generics.CreateAPIView):
 
 
 
-# class ProductView(generics.CreateAPIView):
-#     renderer_classes = [TemplateHTMLRenderer]
-#     template_name = "product.html"
-#     serializer_class = ProductSerializer
+class ProductView(generics.CreateAPIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = "product.html"
+    serializer_class = ProductSerializer
 
-#     def get(self, request: Union[Request, HttpRequest], image_id) -> render:
-#         if "username" not in request.session:
-#             return redirect("login")
-#         product_details = Product.objects.filter(id=image_id)
-#         product_id = product_details.values("id").first()
-#         get_id = product_id.get("id")
-#         request.session["id"] = get_id
-#         return render(
-#             request, self.template_name, context={"product_details": product_details}
-#         )  
+    def get(self, request, image_id):
+        if "username" not in request.session:
+            return redirect("login")
+        
+        product = Product.objects.filter(id=image_id).first()
+        request.session["just_id"] =product.id
+        print("Dfsff",product)
+        if not product:
+            return redirect("shop")
+        
+        return render(request, "product.html", {"product_details": product})
+
+    def post(self, request, product_id):
+        if "username" not in request.session:
+            return redirect("login")
+
+        product = Product.objects.filter(id=product_id).first()
+        if not product:
+            return redirect("shop")
+
+        person = Person.objects.get(username=request.session["username"])
+        quantity = request.POST.get("quantity", 1)
+        cart_item, created = Cart.objects.get_or_create(person=person, product=product)
+        cart_item.quantity += int(quantity)
+        cart_item.save()
+
+        return redirect("product", product_id=product_id)
 
 
 class AddtocartView(generics.CreateAPIView):
