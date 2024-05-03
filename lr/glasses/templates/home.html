@@ -41,9 +41,9 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand mr-5" href="{% url 'home' %}">
-            <span> Like-Real </span>
-          </a>
+          <h4 class="navbar-brand mr-5" href="{% url 'home' %}"> 
+            <span style="color: rgb(255, 255, 255);"> Like-Real </span>
+          </h4>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -87,28 +87,59 @@
     <!-- end header section -->
 
     <!-- slider section -->
-    <section class="slider_section position-relative">
+    <section class=" slider_section position-relative">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li> <span>-</span>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
+      </ol>
       <div class="glass">
-        <h6>Glasses</h6>
+        <h6>
+          Glasses
+        </h6>
       </div>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="container">
               <div class="row">
                 <div class="col-md-7">
                   <div class="detail-box" style="margin-left:50px;">
-                    <h1>Welcome to online</h1>
-                    <h2>Glasses shop</h2>
-                    <div class="btn-box">
-                      <a href="{% url 'shop' %}" class="btn-1"> Buy Now </a>
+                    <div>
+                      <h1>Welcome to online</h1>
+                      <h2>Glasses shop</h2>
+  
+                      <div class="btn-box">
+                        <a href="{% url 'shop' %}" class="btn-1">
+                          Buy Now
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="detail-box">
+                    <div>
+                      <h1>Welcome to online</h1>
+                      <h2>Glasses shop</h2>
+                        <div class="btn-box" style="margin-left:50px;">
+                        <a href="{% url 'shop' %}" class="btn-1">
+                          Buy Now
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
         <div class="custom_carousel-control">
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="sr-only">Previous</span>
@@ -350,8 +381,7 @@
           <div class="img-container tab-pane fade" id="qTab3" role="tabpanel" aria-labelledby="QTab3Link">
             <div class="img-box ">
               <img
-                src="https://img.freepik.com/free-photo/door-leading-magical-world_23-2151038251.jpg?t=st=1713355078~exp=1713358678~hmac=040072950cf08ff3215c54e1fbda106be88bc91b351582f7113c4b97022c1806&w=996"
-                alt="not found image">
+                src="{% static 'C:\Users\JAY\OneDrive\Desktop\project like real\lr\glasses\static\images\woman-portrait-with-blue-lights-visual-effects.jpg'%}">
             </div>
           </div>
           <div class="img-container tab-pane fade" id="qTab4" role="tabpanel" aria-labelledby="QTab4Link">
@@ -572,7 +602,7 @@
 
     <script> src = "{% static 'C:\Users\JAY\OneDrive\Desktop\project like real\lr\glasses\static\js\bootstrap.js'%}" </script>
     <script> src = "{% static 'C:\Users\JAY\OneDrive\Desktop\project like real\lr\glasses\static\js\custom.js'%}" </script>
-    <script> src = "{% static 'jquery-3.4.1.min.js' %}" </script>
+    <script> src = "{% static 'C:\Users\JAY\OneDrive\Desktop\project like real\lr\glasses\static\js\jquery-3.4.1.min.js' %}" </script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
